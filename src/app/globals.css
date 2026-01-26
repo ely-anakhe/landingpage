@@ -5,7 +5,7 @@
   /* Quiet Luxury Palette - Warmer, Creamier */
   --background: #FDFCF8;
   /* Cream/Eggshell - Warmer than bone */
-  --primary: #800000;
+  --primary: #753b2c;
   /* Luxury Maroon */
   --primary-dark: #4A0404;
   /* Oxblood */
@@ -13,7 +13,7 @@
   /* Warm Stone - No grey tones */
   --text-main: #1A1A1A;
   /* Soft Black */
-  --border: #F2EBE5;
+  --border: #4a2819;
   /* Warm Beige Border - No grey */
   --foreground: #1A1A1A;
   /* Alias for text-main if needed by shadcn/next defaults */

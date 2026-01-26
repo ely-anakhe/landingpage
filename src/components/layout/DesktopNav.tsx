@@ -35,10 +35,10 @@ export function DesktopNav() {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "text-xs uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.2em]",
+                                "text-xs uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.2em] font-serif",
                                 isActive
-                                    ? "font-serif font-bold text-primary"
-                                    : "font-sans text-muted"
+                                    ? "font-bold text-primary"
+                                    : "text-muted"
                             )}
                         >
                             {item.label}
@@ -47,7 +47,7 @@ export function DesktopNav() {
                 })}
 
                 <OpenInquiryButton
-                    className="text-xs uppercase tracking-[0.15em] font-sans text-muted hover:text-primary hover:tracking-[0.2em] bg-transparent hover:bg-transparent border-none p-0 h-auto"
+                    className="text-xs uppercase tracking-[0.15em] font-serif text-muted hover:text-primary hover:tracking-[0.2em] bg-transparent hover:bg-transparent border-none p-0 h-auto"
                     variant="ghost"
                     label="Contact"
                 />

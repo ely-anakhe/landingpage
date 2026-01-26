@@ -7,7 +7,7 @@ interface OpenInquiryButtonProps {
     label?: string;
     context?: string;
     className?: string;
-    variant?: "primary" | "link";
+    variant?: "primary" | "link" | "ghost";
 }
 
 export function OpenInquiryButton({
@@ -21,6 +21,17 @@ export function OpenInquiryButton({
     const handleOpen = () => {
         openInquiry(context);
     };
+
+    if (variant === "ghost") {
+        return (
+            <button
+                onClick={handleOpen}
+                className={cn("transition-colors", className)}
+            >
+                {label}
+            </button>
+        );
+    }
 
     if (variant === "link") {
         return (

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Lato } from "next/font/google"; // Changed fonts
+import { Cormorant_Garamond, Lato } from "next/font/google";
 import "./globals.css";
-import { SanctuaryHeader } from "@/components/layout/SanctuaryHeader";
+import { DesktopNav } from "@/components/layout/DesktopNav";
+import { MobileHeader } from "@/components/layout/MobileHeader";
 import { SanctuaryFooter } from "@/components/layout/SanctuaryFooter";
 import { InquiryModal } from "@/components/ui/InquiryModal";
 
@@ -33,9 +34,14 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${lato.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
-        <SanctuaryHeader />
-        <main className="flex-grow pt-24">{children}</main>
-        <SanctuaryFooter />
+        <DesktopNav />
+        <MobileHeader />
+
+        <main className="flex-grow pt-24 md:pt-0 w-full min-h-screen flex flex-col relative">
+          {children}
+          <SanctuaryFooter /> {/* Kept footer here for now, might need adjustment based on sidebar layout pref */}
+        </main>
+
         <InquiryModal />
       </body>
     </html>

@@ -28,6 +28,31 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'gallery',
+            title: 'Gallery',
+            type: 'array',
+            of: [{ type: 'image', options: { hotspot: true } }],
+        }),
+        defineField({
+            name: 'year',
+            title: 'Year',
+            type: 'number',
+        }),
+        defineField({
+            name: 'location',
+            title: 'Location',
+            type: 'string',
+        }),
+        defineField({
+            name: 'tags',
+            title: 'Tags',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: {
+                layout: 'tags',
+            },
+        }),
+        defineField({
             name: 'description',
             title: 'Description',
             type: 'blockContent',

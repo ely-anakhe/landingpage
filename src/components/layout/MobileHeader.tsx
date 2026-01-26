@@ -8,13 +8,19 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OpenInquiryButton } from "@/components/ui/OpenInquiryButton";
 
-const navItems = [
-    { label: "Interiors", href: "/interiors" },
-    { label: "Atelier", href: "/atelier" },
-    { label: "Journal", href: "/journal" },
-];
+interface MobileHeaderProps {
+    navItems?: { label: string; href: string }[];
+}
 
-export function MobileHeader() {
+export function MobileHeader({ navItems = [] }: MobileHeaderProps) {
+    const defaultItems = [
+        { label: "Interiors", href: "/interiors" },
+        { label: "Atelier", href: "/atelier" },
+        { label: "Journal", href: "/journal" },
+    ];
+
+    const items = navItems?.length > 0 ? navItems : defaultItems;
+
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
 
@@ -49,7 +55,7 @@ export function MobileHeader() {
                         className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center space-y-8 md:hidden"
                     >
                         <nav className="flex flex-col items-center space-y-8">
-                            {navItems.map((item) => (
+                            {items.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}

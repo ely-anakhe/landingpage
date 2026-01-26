@@ -5,13 +5,19 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { OpenInquiryButton } from "@/components/ui/OpenInquiryButton";
 
-const navItems = [
-    { label: "Interiors", href: "/interiors" },
-    { label: "Atelier", href: "/atelier" },
-    { label: "Journal", href: "/journal" },
-];
+interface DesktopNavProps {
+    navItems?: { label: string; href: string }[];
+}
 
-export function DesktopNav() {
+export function DesktopNav({ navItems = [] }: DesktopNavProps) {
+    // Default items if none provided
+    const defaultItems = [
+        { label: "Interiors", href: "/interiors" },
+        { label: "Atelier", href: "/atelier" },
+        { label: "Journal", href: "/journal" },
+    ];
+
+    const items = navItems?.length > 0 ? navItems : defaultItems;
     const pathname = usePathname();
 
     return (
@@ -28,7 +34,7 @@ export function DesktopNav() {
 
             {/* Navigation */}
             <nav className="flex items-center gap-8">
-                {navItems.map((item) => {
+                {items.map((item) => {
                     const isActive = pathname === item.href;
                     return (
                         <Link

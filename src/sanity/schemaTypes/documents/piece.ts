@@ -54,6 +54,12 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'video',
+            title: 'Video display',
+            type: 'mux.video',
+            description: 'Optional. If provided, this will play on the detail page.',
+        }),
+        defineField({
             name: 'gallery',
             title: 'Gallery',
             type: 'array',

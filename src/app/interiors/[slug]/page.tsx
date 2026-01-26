@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 import { Gallery } from "@/components/interiors/Gallery";
+import { VideoPlayer } from "@/components/ui/VideoPlayer";
 
 export const revalidate = 60;
 
@@ -29,13 +30,18 @@ export default async function ProjectPage({
         notFound();
     }
 
-    const { title, location, year, description, heroImage, gallery } = project;
+    // ... imports
+
+    // ... inside function
+    const { title, location, year, description, heroImage, gallery, video } = project;
 
     return (
         <article>
             {/* Hero */}
             <div className="w-full h-[60vh] md:h-[80vh] relative overflow-hidden bg-surface">
-                {heroImage && (
+                {video ? (
+                    <VideoPlayer playbackId={video.playbackId} className="w-full h-full" />
+                ) : heroImage ? (
                     <Image
                         src={urlFor(heroImage).url()}
                         alt={title}
@@ -43,7 +49,7 @@ export default async function ProjectPage({
                         className="object-cover"
                         priority
                     />
-                )}
+                ) : null}
             </div>
 
             <Container className="py-24">

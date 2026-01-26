@@ -7,6 +7,7 @@ import { OpenInquiryButton } from "@/components/ui/OpenInquiryButton";
 import { SpecAccordion } from "@/components/atelier/SpecAccordion";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
+import { VideoPlayer } from "@/components/ui/VideoPlayer";
 
 export const revalidate = 60;
 
@@ -22,7 +23,10 @@ export default async function PiecePage({
         notFound();
     }
 
-    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects, relatedFAQs } = piece;
+    // ...
+
+    // ... inside function
+    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects, relatedFAQs, video } = piece;
 
     return (
         <article className="min-h-screen">
@@ -32,8 +36,10 @@ export default async function PiecePage({
                     {/* Left Column: Image - Sticky on Desktop */}
                     <div className="md:col-span-6 lg:col-span-7 relative">
                         <div className="sticky top-32">
-                            <div className="relative aspect-[4/5] bg-surface w-full">
-                                {mainImage && (
+                            <div className="relative aspect-[4/5] bg-surface w-full overflow-hidden">
+                                {video ? (
+                                    <VideoPlayer playbackId={video.playbackId} className="w-full h-full absolute inset-0" />
+                                ) : mainImage ? (
                                     <Image
                                         src={urlFor(mainImage).width(1000).url()}
                                         alt={title}
@@ -42,7 +48,7 @@ export default async function PiecePage({
                                         priority
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                     />
-                                )}
+                                ) : null}
                             </div>
                         </div>
                     </div>

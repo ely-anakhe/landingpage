@@ -6,6 +6,9 @@ import { MobileHeader } from "@/components/layout/MobileHeader";
 import { Footer } from "@/components/layout/Footer";
 import { InquiryModal } from "@/components/inquiry/InquiryModal";
 import { Preloader } from "@/components/ui/Preloader";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { client } from "@/sanity/lib/client";
+import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -26,23 +29,29 @@ const lato = Lato({
   weight: ["300", "400"],
 });
 
-export const metadata: Metadata = {
-  title: "Anakhe by Jordan Anais",
-  description: "Bespoke interior design studio and furniture atelier.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await client.fetch(SETTINGS_QUERY);
+  return {
+    title: settings?.seo?.title || "Anakhe by Jordan Anais",
+    description: settings?.seo?.description || "Bespoke interior design studio and furniture atelier.",
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await client.fetch(SETTINGS_QUERY);
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${cormorant.variable} ${lato.variable} ${cedarville.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
-        <DesktopNav />
-        <MobileHeader />
+        <AnnouncementBar data={settings?.announcementBar} />
+        <DesktopNav navItems={settings?.mainNavigation} />
+        <MobileHeader navItems={settings?.mainNavigation} />
 
         <main className="flex-grow pt-24 md:pt-0 w-full min-h-screen flex flex-col relative">
           {children}

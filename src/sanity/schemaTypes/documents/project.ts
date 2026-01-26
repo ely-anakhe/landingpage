@@ -28,6 +28,12 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'video',
+            title: 'Video',
+            type: 'mux.video',
+            description: 'Optional. Upload a video to display instead of/alongside the hero image.',
+        }),
+        defineField({
             name: 'gallery',
             title: 'Gallery',
             type: 'array',

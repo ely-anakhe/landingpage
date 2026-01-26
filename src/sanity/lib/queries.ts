@@ -16,6 +16,7 @@ export const PROJECT_DETAIL_QUERY = defineQuery(`
   *[_type == "project" && slug.current == $slug][0] {
     ...,
     "heroImage": heroImage.asset->{..., metadata},
+    "video": video.asset->{playbackId, assetId},
     "gallery": gallery[].asset->{..., metadata}
   }
 `);
@@ -35,6 +36,7 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
   *[_type == "piece" && slug.current == $slug][0] {
     ...,
     "mainImage": mainImage.asset->{..., metadata},
+    "video": video.asset->{playbackId, assetId},
     "gallery": gallery[].asset->{..., metadata},
     "relatedFAQs": relatedFAQs[]->{ _id, question, answer },
     "relatedProjects": *[_type == "project" && references(^._id)] {
@@ -52,5 +54,29 @@ export const GLOBAL_FAQ_QUERY = defineQuery(`
     question,
     answer,
     category
+  }
+`);
+
+export const SETTINGS_QUERY = defineQuery(`
+  *[_type == "settings"][0] {
+    siteTitle,
+    seo{
+      title,
+      description
+    },
+    announcementBar{
+      enabled,
+      text,
+      link
+    },
+    mainNavigation[]{
+      label,
+      href
+    },
+    footerContact,
+    socialLinks[]{
+      platform,
+      url
+    }
   }
 `);

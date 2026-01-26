@@ -11,6 +11,43 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'seo',
+            title: 'Global SEO Defaults',
+            type: 'object',
+            description: 'Default title, description, and share image for the site.',
+            fields: [
+                { name: 'title', type: 'string', title: 'Site Title (Browser Tab)' },
+                { name: 'description', type: 'text', rows: 3, title: 'Meta Description' },
+            ],
+        }),
+        defineField({
+            name: 'announcementBar',
+            title: 'Announcement Bar',
+            type: 'object',
+            fields: [
+                { name: 'enabled', type: 'boolean', title: 'Enabled', initialValue: false },
+                { name: 'text', type: 'string', title: 'Text' },
+                { name: 'link', type: 'url', title: 'Link (Optional)' },
+            ]
+        }),
+        defineField({
+            name: 'mainNavigation',
+            title: 'Main Navigation',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'label', type: 'string', title: 'Label' },
+                        { name: 'href', type: 'string', title: 'Link (e.g. /interiors)' },
+                    ],
+                    preview: {
+                        select: { title: 'label', subtitle: 'href' }
+                    }
+                }
+            ]
+        }),
+        defineField({
             name: 'footerContact',
             title: 'Footer Contact Info',
             type: 'blockContent',

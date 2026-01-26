@@ -66,7 +66,7 @@ export default async function PiecePage({
                         <div className="mb-12">
                             <OpenInquiryButton
                                 label="Inquire about this piece"
-                                context={`Inquiry: ${title}`}
+                                piece={{ title, slug }}
                                 className="w-full text-center"
                             />
                         </div>

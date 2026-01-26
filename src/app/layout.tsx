@@ -4,7 +4,7 @@ import "./globals.css";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { SanctuaryFooter } from "@/components/layout/SanctuaryFooter";
-import { InquiryModal } from "@/components/ui/InquiryModal";
+import { InquiryModal } from "@/components/inquiry/InquiryModal";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",

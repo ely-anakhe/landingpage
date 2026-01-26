@@ -1,25 +1,25 @@
 "use client";
 
-import { useInquiryStore } from "@/store/use-inquiry-store";
+import { useInquiryStore } from "@/lib/store/inquiryStore";
 import { cn } from "@/lib/utils";
 
 interface OpenInquiryButtonProps {
     label?: string;
-    context?: string;
+    piece?: { title: string; slug: string };
     className?: string;
     variant?: "primary" | "link" | "ghost";
 }
 
 export function OpenInquiryButton({
     label = "Inquire",
-    context = "General Inquiry",
+    piece,
     className,
     variant = "primary"
 }: OpenInquiryButtonProps) {
     const { openInquiry } = useInquiryStore();
 
     const handleOpen = () => {
-        openInquiry(context);
+        openInquiry(piece);
     };
 
     if (variant === "ghost") {

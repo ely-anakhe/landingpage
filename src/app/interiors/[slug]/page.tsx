@@ -68,13 +68,7 @@ export default async function ProjectPage({
                         )}
 
                         {/* Gallery */}
-                        {gallery && gallery.length > 0 && (
-                            <div className="mt-24 flex flex-col gap-12">
-                                {gallery.map((image: any, index: number) => (
-                                    <Gallery key={image._id || index} image={image} index={index} />
-                                ))}
-                            </div>
-                        )}
+                        {gallery && gallery.length > 0 && <Gallery images={gallery} />}
                     </div>
                 </div>
             </Container>

@@ -13,6 +13,13 @@ export function middleware(request: NextRequest) {
             accessKey === STUDIO_ACCESS_KEY ||
             request.cookies.get('studio_access')?.value === STUDIO_ACCESS_KEY
 
+        console.log({
+            expected: STUDIO_ACCESS_KEY,
+            received: accessKey,
+            cookie: request.cookies.get('studio_access')?.value,
+            valid: hasValidAccess
+        })
+
         if (!hasValidAccess) {
             // Redirect to home if no valid access
             return NextResponse.redirect(new URL('/', request.url))

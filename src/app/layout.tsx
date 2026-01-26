@@ -3,8 +3,9 @@ import { Cormorant_Garamond, Lato, Cedarville_Cursive } from "next/font/google";
 import "./globals.css";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileHeader } from "@/components/layout/MobileHeader";
-import { SanctuaryFooter } from "@/components/layout/SanctuaryFooter";
+import { Footer } from "@/components/layout/Footer";
 import { InquiryModal } from "@/components/inquiry/InquiryModal";
+import { Preloader } from "@/components/ui/Preloader";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -45,10 +46,11 @@ export default function RootLayout({
 
         <main className="flex-grow pt-24 md:pt-0 w-full min-h-screen flex flex-col relative">
           {children}
-          <SanctuaryFooter /> {/* Kept footer here for now, might need adjustment based on sidebar layout pref */}
+          <Footer /> {/* Kept footer here for now, might need adjustment based on sidebar layout pref */}
         </main>
 
         <InquiryModal />
+        <Preloader />
       </body>
     </html>
   );

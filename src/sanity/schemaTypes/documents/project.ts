@@ -31,7 +31,37 @@ export default defineType({
             name: 'gallery',
             title: 'Gallery',
             type: 'array',
-            of: [{ type: 'image', options: { hotspot: true } }],
+            of: [
+                {
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        {
+                            name: 'curatorNote',
+                            type: 'string',
+                            title: 'Curator Note (Handwritten)',
+                            description:
+                                'Short annotation to appear over the image (e.g., "Love this texture"). Keep it under 5 words.',
+                        },
+                        {
+                            name: 'notePosition',
+                            type: 'string',
+                            title: 'Note Position',
+                            options: {
+                                list: [
+                                    { title: "Top Left", value: "top-left" },
+                                    { title: "Top Right", value: "top-right" },
+                                    { title: "Bottom Left", value: "bottom-left" },
+                                    { title: "Bottom Right", value: "bottom-right" },
+                                    { title: "Center", value: "center" },
+                                ],
+                                layout: "radio",
+                            },
+                            initialValue: "bottom-right",
+                        },
+                    ],
+                },
+            ],
         }),
         defineField({
             name: 'year',

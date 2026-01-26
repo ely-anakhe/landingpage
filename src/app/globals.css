@@ -31,7 +31,9 @@
   --color-muted: var(--muted);
 
   --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-handwriting: var(--font-handwriting), cursive;
 
   --radius-sm: 2px;
   --radius-md: 2px;

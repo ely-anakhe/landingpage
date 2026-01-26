@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Cormorant_Garamond, Lato, Cedarville_Cursive } from "next/font/google";
 import "./globals.css";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileHeader } from "@/components/layout/MobileHeader";
@@ -11,6 +11,12 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
+});
+
+const cedarville = Cedarville_Cursive({
+  variable: "--font-handwriting",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const lato = Lato({
@@ -32,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${cormorant.variable} ${lato.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
+        className={`${cormorant.variable} ${lato.variable} ${cedarville.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
         <DesktopNav />
         <MobileHeader />

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { OpenInquiryButton } from "@/components/ui/OpenInquiryButton";
 import { SpecAccordion } from "@/components/atelier/SpecAccordion";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
 
 export const revalidate = 60;
 
@@ -21,7 +22,7 @@ export default async function PiecePage({
         notFound();
     }
 
-    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects } = piece;
+    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects, relatedFAQs } = piece;
 
     return (
         <article className="min-h-screen">
@@ -81,6 +82,22 @@ export default async function PiecePage({
                             )}
                             <SpecAccordion title="Shipping & Delivery" content="White glove delivery available worldwide. Please inquire for a quote to your location." />
                         </div>
+
+                        {/* Related FAQs */}
+                        {relatedFAQs && relatedFAQs.length > 0 && (
+                            <div className="mt-12 pt-8 border-t border-border">
+                                <h3 className="font-serif text-lg italic text-primary mb-4">Details & Care</h3>
+                                <div className="space-y-0">
+                                    {relatedFAQs.map((faq: any) => (
+                                        <FaqAccordion
+                                            key={faq._id}
+                                            question={faq.question}
+                                            answer={faq.answer}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
 

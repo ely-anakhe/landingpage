@@ -36,11 +36,21 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
     ...,
     "mainImage": mainImage.asset->{..., metadata},
     "gallery": gallery[].asset->{..., metadata},
+    "relatedFAQs": relatedFAQs[]->{ _id, question, answer },
     "relatedProjects": *[_type == "project" && references(^._id)] {
       _id, 
       title, 
       slug, 
       "heroImage": heroImage.asset->{..., metadata}
     }
+  }
+`);
+
+export const GLOBAL_FAQ_QUERY = defineQuery(`
+  *[_type == "faq"] | order(category asc) {
+    _id,
+    question,
+    answer,
+    category
   }
 `);

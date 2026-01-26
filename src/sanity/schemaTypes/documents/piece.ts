@@ -60,6 +60,12 @@ export default defineType({
             of: [{ type: 'image', options: { hotspot: true } }],
         }),
         defineField({
+            name: 'relatedFAQs',
+            title: 'Related FAQs',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'faq' }] }],
+        }),
+        defineField({
             name: 'seo',
             title: 'SEO',
             type: 'seo',

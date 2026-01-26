@@ -5,6 +5,7 @@ import seo from './objects/seo'
 import settings from './documents/settings'
 import piece from './documents/piece'
 import project from './documents/project'
+import faq from './documents/faq'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,5 +17,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     settings,
     piece,
     project,
+    faq,
   ],
 }

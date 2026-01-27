@@ -2,6 +2,7 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { PortableText } from "next-sanity";
+import { NewsletterForm } from "./NewsletterForm";
 
 export const Footer = async () => {
     const settings = await client.fetch(SETTINGS_QUERY);
@@ -108,19 +109,7 @@ export const Footer = async () => {
                     <span className="font-handwriting text-4xl text-text-main/60 -rotate-2 mb-6 block">
                         Newsletter
                     </span>
-                    <form className="w-full">
-                        <input
-                            type="email"
-                            placeholder="Email Functionality Coming Soon"
-                            className="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-primary font-serif placeholder:italic"
-                        />
-                        <button
-                            type="submit"
-                            className="mt-4 w-full bg-black text-white font-serif uppercase tracking-widest py-3 text-xs hover:bg-primary transition-colors"
-                        >
-                            Submit
-                        </button>
-                    </form>
+                    <NewsletterForm />
                 </div>
             </div>
 

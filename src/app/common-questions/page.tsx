@@ -44,7 +44,7 @@ export default async function CommonQuestionsPage() {
                     <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-text-main mb-6 italic">
                         Common Questions
                     </h1>
-                    <p className="font-sans text-muted text-sm md:text-base tracking-wide max-w-lg mx-auto">
+                    <p className="font-serif text-muted text-sm md:text-base tracking-wide max-w-lg mx-auto">
                         Details on ordering, delivery, and caring for your pieces.
                     </p>
                 </div>

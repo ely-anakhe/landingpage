@@ -16,7 +16,7 @@ export function Hero() {
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="max-w-4xl"
             >
-                <h2 className="font-sans text-sm md:text-base uppercase tracking-[0.4em] text-muted mb-8">
+                <h2 className="font-serif text-sm md:text-base uppercase tracking-[0.4em] text-muted mb-8">
                     Interior Design & Bespoke Atelier
                 </h2>
 
@@ -29,7 +29,7 @@ export function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 1 }}
-                    className="font-sans text-lg md:text-xl text-foreground/80 max-w-lg mx-auto leading-relaxed"
+                    className="font-serif text-lg md:text-xl text-foreground/80 max-w-lg mx-auto leading-relaxed"
                 >
                     We do not furnish rooms. We curate conviction.
                     Enter the conviction engine.

@@ -16,12 +16,12 @@ export function AnnouncementBar({ data }: AnnouncementBarProps) {
             {data.link ? (
                 <Link
                     href={data.link}
-                    className="font-sans text-[10px] md:text-xs tracking-[0.2em] uppercase hover:underline underline-offset-4"
+                    className="font-serif text-[10px] md:text-xs tracking-[0.2em] uppercase hover:underline underline-offset-4"
                 >
                     {data.text}
                 </Link>
             ) : (
-                <p className="font-sans text-[10px] md:text-xs tracking-[0.2em] uppercase">
+                <p className="font-serif text-[10px] md:text-xs tracking-[0.2em] uppercase">
                     {data.text}
                 </p>
             )}

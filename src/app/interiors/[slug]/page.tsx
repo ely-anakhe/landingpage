@@ -6,6 +6,7 @@ import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 import { Gallery } from "@/components/interiors/Gallery";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { PageNavigation } from "@/components/ui/PageNavigation";
 
 export const revalidate = 60;
 
@@ -33,10 +34,15 @@ export default async function ProjectPage({
     // ... imports
 
     // ... inside function
-    const { title, location, year, description, heroImage, gallery, video } = project;
+    // ... inside function
+    const { title, location, year, description, heroImage, gallery, video, neighbors } = project;
+
+    const currentIndex = neighbors?.findIndex((n: any) => n.slug === slug) ?? -1;
+    const prev = currentIndex > 0 ? neighbors[currentIndex - 1] : null;
+    const next = currentIndex < (neighbors?.length ?? 0) - 1 ? neighbors[currentIndex + 1] : null;
 
     return (
-        <article>
+        <article className="relative">
             {/* Hero */}
             <div className="w-full h-[60vh] md:h-[80vh] relative overflow-hidden bg-surface">
                 {video ? (
@@ -52,23 +58,23 @@ export default async function ProjectPage({
                 ) : null}
             </div>
 
-            <Container className="py-24">
+            <Container className="pt-24 pb-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* Header / Meta */}
-                    <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+                    <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
                         <h1 className="font-serif text-5xl md:text-6xl text-text-main leading-none mb-6">
                             {title}
                         </h1>
-                        <div className="flex flex-col gap-2 font-sans text-xs uppercase tracking-widest text-muted">
+                        <div className="flex flex-col gap-2 font-serif text-xs uppercase tracking-widest text-muted">
                             {location && <span>{location}</span>}
                             {year && <span>{year}</span>}
                         </div>
                     </div>
 
                     {/* Story */}
-                    <div className="lg:col-span-8 lg:col-start-6">
+                    <div className="lg:col-span-7 lg:col-start-6">
                         {description && (
-                            <div className="prose prose-lg prose-p:font-sans prose-p:text-text-main/80 prose-headings:font-serif prose-headings:font-normal max-w-none">
+                            <div className="prose prose-lg font-serif prose-p:font-serif [&_p]:font-serif prose-p:text-text-main/80 prose-headings:font-serif prose-headings:font-normal max-w-none">
                                 <PortableText value={description} components={components} />
                             </div>
                         )}
@@ -77,6 +83,13 @@ export default async function ProjectPage({
                         {gallery && gallery.length > 0 && <Gallery images={gallery} />}
                     </div>
                 </div>
+
+                <PageNavigation
+                    prev={prev}
+                    next={next}
+                    basePath="/interiors"
+                    className="border-none mt-12 pt-0"
+                />
             </Container>
         </article>
     );

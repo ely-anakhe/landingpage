@@ -8,12 +8,13 @@ interface ProjectProps {
     slug: { current: string };
     year?: number;
     location?: string;
-    heroImage: any; // Using any for Sanity image object for now, preferably typed properly
+    heroImage: any;
     tags?: string[];
+    curatorNote?: string;
 }
 
 export function ProjectCard({ project }: { project: ProjectProps }) {
-    const { title, slug, year, location, heroImage } = project;
+    const { title, slug, year, location, heroImage, curatorNote } = project;
 
     return (
         <Link href={`/interiors/${slug.current}`} className="group block break-inside-avoid mb-8">
@@ -28,6 +29,13 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 )}
+                {curatorNote && (
+                    <div className="absolute bottom-4 right-4 z-10 transform -rotate-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <span className="font-handwriting text-2xl md:text-3xl text-white drop-shadow-md">
+                            {curatorNote}
+                        </span>
+                    </div>
+                )}
             </div>
 
             <div className="mt-4">
@@ -35,7 +43,7 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                     {title}
                 </h3>
                 {location && year && (
-                    <p className="font-sans text-xs uppercase tracking-widest text-muted mt-1 group-hover:text-primary/70 transition-colors duration-300">
+                    <p className="font-serif text-xs uppercase tracking-widest text-muted mt-1 group-hover:text-primary/70 transition-colors duration-300">
                         {location} — {year}
                     </p>
                 )}

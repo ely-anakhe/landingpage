@@ -15,7 +15,7 @@ export default function DesignSystemPage() {
                         <h1 className="text-5xl font-serif font-light text-primary">
                             Quiet Luxury Design System
                         </h1>
-                        <p className="text-xl font-sans text-muted max-w-2xl">
+                        <p className="text-xl font-serif text-muted max-w-2xl">
                             A verification audit for the Anakhe design primitives, typography,
                             and core component library.
                         </p>
@@ -28,7 +28,7 @@ export default function DesignSystemPage() {
                         </h2>
                         <div className="grid gap-8">
                             <div className="space-y-2">
-                                <span className="text-xs text-muted uppercase tracking-wider font-sans">
+                                <span className="text-xs text-muted uppercase tracking-wider font-serif">
                                     Display (Light 300)
                                 </span>
                                 <h1 className="text-6xl font-serif font-light">
@@ -36,7 +36,7 @@ export default function DesignSystemPage() {
                                 </h1>
                             </div>
                             <div className="space-y-2">
-                                <span className="text-xs text-muted uppercase tracking-wider font-sans">
+                                <span className="text-xs text-muted uppercase tracking-wider font-serif">
                                     Heading 2 (Regular 400)
                                 </span>
                                 <h2 className="text-5xl font-serif font-normal">
@@ -44,7 +44,7 @@ export default function DesignSystemPage() {
                                 </h2>
                             </div>
                             <div className="space-y-2">
-                                <span className="text-xs text-muted uppercase tracking-wider font-sans">
+                                <span className="text-xs text-muted uppercase tracking-wider font-serif">
                                     Heading 3 (Medium 500)
                                 </span>
                                 <h3 className="text-4xl font-serif font-medium">
@@ -52,7 +52,7 @@ export default function DesignSystemPage() {
                                 </h3>
                             </div>
                             <div className="space-y-2">
-                                <span className="text-xs text-muted uppercase tracking-wider font-sans">
+                                <span className="text-xs text-muted uppercase tracking-wider font-serif">
                                     Heading 4 (SemiBold 600)
                                 </span>
                                 <h4 className="text-3xl font-serif font-semibold">
@@ -60,7 +60,7 @@ export default function DesignSystemPage() {
                                 </h4>
                             </div>
                             <div className="space-y-2">
-                                <span className="text-xs text-muted uppercase tracking-wider font-sans">
+                                <span className="text-xs text-muted uppercase tracking-wider font-serif">
                                     Italic Styling
                                 </span>
                                 <p className="text-4xl font-serif italic text-primary">
@@ -96,7 +96,7 @@ export default function DesignSystemPage() {
                         <div className="grid gap-12 md:grid-cols-2">
                             {/* Buttons */}
                             <div className="space-y-6">
-                                <h3 className="font-sans font-medium text-lg">Buttons</h3>
+                                <h3 className="font-serif font-medium text-lg">Buttons</h3>
                                 <div className="flex flex-wrap gap-4 items-center">
                                     <Button>Solid Button</Button>
                                     <Button variant="outline">Outline Button</Button>
@@ -113,7 +113,7 @@ export default function DesignSystemPage() {
 
                             {/* Form Elements */}
                             <div className="space-y-6 max-w-md">
-                                <h3 className="font-sans font-medium text-lg">Form Inputs</h3>
+                                <h3 className="font-serif font-medium text-lg">Form Inputs</h3>
                                 <div className="space-y-4">
                                     <Input placeholder="Enter your email address..." />
                                     <Input
@@ -126,7 +126,7 @@ export default function DesignSystemPage() {
 
                             {/* Icons */}
                             <div className="space-y-6">
-                                <h3 className="font-sans font-medium text-lg">Icons (Thin Stroke 1.5px)</h3>
+                                <h3 className="font-serif font-medium text-lg">Icons (Thin Stroke 1.5px)</h3>
                                 <div className="flex gap-6 text-primary">
                                     <Icon icon={ArrowRight} />
                                     <Icon icon={Check} />
@@ -147,7 +147,7 @@ function Swatch({ name, color, hex, text = "text-text-main", border }: { name: s
             <div className={`h-24 w-full rounded-sm flex items-end p-3 ${color} ${text} ${border ? 'border border-border' : ''}`}>
                 <span className="font-mono text-xs opacity-80">{hex}</span>
             </div>
-            <p className="font-sans text-sm font-medium">{name}</p>
+            <p className="font-serif text-sm font-medium">{name}</p>
         </div>
     );
 }

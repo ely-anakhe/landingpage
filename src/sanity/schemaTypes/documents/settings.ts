@@ -11,6 +11,22 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'heroContent',
+            title: 'Home Hero Content',
+            type: 'array',
+            description: 'Mixed content (Images and Videos) for the home page hero carousel.',
+            of: [
+                {
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        { name: 'alt', type: 'string', title: 'Alternative Text' }
+                    ]
+                },
+                { type: 'mux.video', title: 'Video' }
+            ]
+        }),
+        defineField({
             name: 'seo',
             title: 'Global SEO Defaults',
             type: 'object',
@@ -69,5 +85,32 @@ export default defineType({
                 }
             ]
         }),
+        defineField({
+            name: 'philosophyImage',
+            title: 'Philosophy Section Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'homeAssets',
+        }),
+        defineField({
+            name: 'materialsImage',
+            title: 'Materials Section Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'homeAssets',
+        }),
+        defineField({
+            name: 'artistImage',
+            title: 'Artist Showcase Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'homeAssets',
+        }),
+    ],
+    groups: [
+        {
+            name: 'homeAssets',
+            title: 'Home Page Assets',
+        },
     ],
 })

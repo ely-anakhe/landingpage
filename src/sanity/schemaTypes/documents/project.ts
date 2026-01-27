@@ -28,6 +28,12 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'curatorNote',
+            title: 'Curator Note',
+            type: 'string',
+            description: 'Short, handwritten-style annotation to appear over the project card (e.g. "Serenity in light"). Keep it short.',
+        }),
+        defineField({
             name: 'video',
             title: 'Video',
             type: 'mux.video',

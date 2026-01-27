@@ -38,7 +38,7 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                     >
-                        <div className="pb-8 prose prose-p:font-sans prose-p:font-light prose-p:text-muted prose-li:font-sans prose-li:text-muted max-w-none">
+                        <div className="pb-8 prose font-serif prose-p:font-serif [&_p]:font-serif prose-p:font-light prose-p:text-muted prose-li:font-serif prose-li:text-muted max-w-none">
                             <PortableText value={answer} />
                         </div>
                     </motion.div>

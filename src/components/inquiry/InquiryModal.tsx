@@ -45,7 +45,7 @@ export function InquiryModal() {
                             {/* Context Banner */}
                             {contextPiece && (
                                 <div className="mb-8 p-4 bg-muted/5 border-l-2 border-primary/20">
-                                    <p className="text-sm font-sans tracking-wide opacity-80">
+                                    <p className="text-sm font-serif tracking-wide opacity-80">
                                         Regarding: <span className="font-semibold text-foreground">{contextPiece.title}</span>
                                     </p>
                                 </div>

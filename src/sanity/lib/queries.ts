@@ -7,6 +7,21 @@ export const PROJECTS_QUERY = defineQuery(`
     slug, 
     year, 
     location,
+    curatorNote,
+    "heroImage": heroImage.asset->{..., metadata},
+    tags
+  }
+
+`);
+
+export const LATEST_PROJECTS_QUERY = defineQuery(`
+  *[_type == "project"] | order(year desc)[0...3] {
+    _id, 
+    title, 
+    slug, 
+    year, 
+    location,
+    curatorNote,
     "heroImage": heroImage.asset->{..., metadata},
     tags
   }
@@ -17,12 +32,25 @@ export const PROJECT_DETAIL_QUERY = defineQuery(`
     ...,
     "heroImage": heroImage.asset->{..., metadata},
     "video": video.asset->{playbackId, assetId},
-    "gallery": gallery[].asset->{..., metadata}
+    "gallery": gallery[].asset->{..., metadata},
+    "neighbors": *[_type == "project"] | order(year desc) { "slug": slug.current, title }
   }
 `);
 
 export const ATELIER_QUERY = defineQuery(`
   *[_type == "piece"] | order(title asc) {
+    _id, 
+    title, 
+    slug, 
+    priceDisplay,
+    "mainImage": mainImage.asset->{..., metadata},
+    shortDescription
+  }
+
+`);
+
+export const FEATURED_PIECES_QUERY = defineQuery(`
+  *[_type == "piece"] | order(title asc)[0...3] {
     _id, 
     title, 
     slug, 
@@ -44,7 +72,8 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
       title, 
       slug, 
       "heroImage": heroImage.asset->{..., metadata}
-    }
+    },
+    "neighbors": *[_type == "piece"] | order(title asc) { "slug": slug.current, title }
   }
 `);
 
@@ -60,6 +89,17 @@ export const GLOBAL_FAQ_QUERY = defineQuery(`
 export const SETTINGS_QUERY = defineQuery(`
   *[_type == "settings"][0] {
     siteTitle,
+    heroContent[]{
+      _type,
+      _type == 'image' => {
+        ...,
+        asset->{..., metadata}
+      },
+      _type == 'mux.video' => {
+        ...,
+        asset->{playbackId, assetId}
+      }
+    },
     seo{
       title,
       description
@@ -77,6 +117,29 @@ export const SETTINGS_QUERY = defineQuery(`
     socialLinks[]{
       platform,
       url
+    },
+    philosophyImage {
+      ...,
+      asset->{..., metadata}
+    },
+    materialsImage {
+      ...,
+      asset->{..., metadata}
+    },
+    artistImage {
+      ...,
+      asset->{..., metadata}
     }
+  }
+`);
+
+export const PRESS_QUERY = defineQuery(`
+  *[_type == "press"] | order(publishedAt desc)[0...3] {
+    _id,
+    title,
+    publication,
+    publishedAt,
+    url,
+    "image": image.asset->{..., metadata}
   }
 `);

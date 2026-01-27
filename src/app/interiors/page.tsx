@@ -10,10 +10,13 @@ export default async function InteriorsPage() {
 
     return (
         <Container className="py-24">
-            <header className="mb-20">
-                <h1 className="font-serif text-4xl md:text-5xl text-text-main tracking-wide">
-                    Selected Works
+            <header className="mb-20 text-center">
+                <h1 className="font-serif text-4xl md:text-5xl text-text-main tracking-wide mb-2">
+                    Archive of Works
                 </h1>
+                <p className="font-serif text-xs uppercase tracking-[0.2em] text-muted">
+                    Selected Projects
+                </p>
             </header>
 
             <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
@@ -21,6 +24,6 @@ export default async function InteriorsPage() {
                     <ProjectCard key={project._id} project={project} />
                 ))}
             </div>
-        </Container>
+        </Container >
     );
 }

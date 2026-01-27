@@ -12,7 +12,7 @@ interface PieceProps {
 }
 
 export function AtelierCard({ piece }: { piece: PieceProps }) {
-    const { title, slug, priceDisplay, mainImage } = piece;
+    const { title, slug, mainImage } = piece;
 
     return (
         <Link href={`/atelier/${slug.current}`} className="group block mb-12">
@@ -29,14 +29,10 @@ export function AtelierCard({ piece }: { piece: PieceProps }) {
             </div>
 
             <div className="mt-4 flex flex-col items-center text-center">
-                <h3 className="font-serif text-xl text-text-main group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-serif text-xl text-text-main group-hover:text-primary transition-colors duration-300 italic">
                     {title}
                 </h3>
-                {priceDisplay && (
-                    <p className="font-sans text-xs uppercase tracking-widest text-muted mt-1">
-                        {priceDisplay}
-                    </p>
-                )}
+
             </div>
         </Link>
     );

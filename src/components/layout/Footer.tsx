@@ -7,20 +7,22 @@ export const Footer = async () => {
     const settings = await client.fetch(SETTINGS_QUERY);
 
     return (
-        <footer className="w-full bg-background border-t border-border py-24 px-6 md:px-12">
+        <footer className="w-full bg-background border-t border-border pt-8 pb-6 px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
                 {/* Col 1: Logo Section (Spans 4 columns) */}
                 <div className="md:col-span-4 flex flex-col">
-                    <Link href="/" className="font-serif text-4xl md:text-5xl tracking-widest text-text-main uppercase">
-                        {settings?.siteTitle || "ANAKHE"}
+                    <Link href="/" className="group flex flex-col w-fit">
+                        <span className="font-serif text-4xl md:text-5xl tracking-widest text-text-main uppercase group-hover:text-primary transition-colors duration-500">
+                            ANAKHE
+                        </span>
+                        <span className="block text-xs md:text-sm tracking-[0.3em] font-serif text-muted uppercase mt-2 group-hover:text-primary/70 transition-colors duration-500">
+                            by Jordan Anais
+                        </span>
                     </Link>
-                    <span className="font-sans text-xs tracking-[0.3em] mt-2 uppercase text-gray-500">
-                        INTERIOR ATELIER
-                    </span>
 
                     {/* Contact Info from Sanity */}
                     {settings?.footerContact && (
-                        <div className="mt-8 font-sans text-sm text-muted leading-relaxed max-w-xs">
+                        <div className="mt-8 font-serif text-sm text-muted leading-relaxed max-w-xs">
                             <PortableText value={settings.footerContact} />
                         </div>
                     )}
@@ -44,7 +46,7 @@ export const Footer = async () => {
                 </div>
 
                 {/* Col 2: Links 1 (Spans 2 columns) */}
-                <div className="md:col-span-2 flex flex-col">
+                <div className="md:col-span-2 flex flex-col justify-end">
                     <Link
                         href="/interiors"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
@@ -58,21 +60,21 @@ export const Footer = async () => {
                         Atelier
                     </Link>
                     <Link
+                        href="/materials"
+                        className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
+                    >
+                        Materials
+                    </Link>
+                    <Link
                         href="/about"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >
                         About
                     </Link>
-                    <Link
-                        href="/contact"
-                        className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
-                    >
-                        Contact
-                    </Link>
                 </div>
 
                 {/* Col 3: Links 2 (Spans 2 columns) */}
-                <div className="md:col-span-2 flex flex-col">
+                <div className="md:col-span-2 flex flex-col justify-end">
                     <Link
                         href="/press"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
@@ -80,29 +82,31 @@ export const Footer = async () => {
                         Press
                     </Link>
                     <Link
-                        href="/journal"
+                        href="/contact"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >
-                        Journal
+                        Contact
                     </Link>
                     <Link
-                        href="/shipping"
+                        href="/common-questions"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >
-                        Shipping
+                        FAQ
                     </Link>
-                    <Link
-                        href="/legal"
+                    <a
+                        href="https://jordananais.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >
-                        Legal
-                    </Link>
+                        JORDAN ANAIS
+                    </a>
                 </div>
 
                 {/* Col 4: Newsletter (Spans 4 columns) */}
-                <div className="md:col-span-4 flex flex-col">
-                    <span className="font-handwriting text-4xl text-text-main -rotate-2 mb-6 block">
-                        Subscribe
+                <div className="md:col-span-4 flex flex-col justify-end">
+                    <span className="font-handwriting text-4xl text-text-main/60 -rotate-2 mb-6 block">
+                        Newsletter
                     </span>
                     <form className="w-full">
                         <input
@@ -114,14 +118,14 @@ export const Footer = async () => {
                             type="submit"
                             className="mt-4 w-full bg-black text-white font-serif uppercase tracking-widest py-3 text-xs hover:bg-primary transition-colors"
                         >
-                            Subscribe
+                            Submit
                         </button>
                     </form>
                 </div>
             </div>
 
             {/* Legal Disclaimer */}
-            <div className="mt-24 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs font-serif tracking-widest text-gray-400 uppercase">
+            <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs font-serif tracking-widest text-gray-400 uppercase">
                 <span>&copy; {new Date().getFullYear()} {settings?.siteTitle || "Anakhe"}. All rights reserved.</span>
                 <div className="flex gap-x-8 mt-4 md:mt-0">
                     <Link href="/privacy" className="hover:text-text-main transition-colors">Privacy Policy</Link>

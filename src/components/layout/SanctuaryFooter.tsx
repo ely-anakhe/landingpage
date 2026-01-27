@@ -9,7 +9,7 @@ export function SanctuaryFooter() {
                     <h2 className="font-serif text-4xl md:text-5xl italic text-primary">
                         Curated Solitude.
                     </h2>
-                    <p className="font-sans text-sm tracking-wide opacity-70 max-w-md leading-relaxed">
+                    <p className="font-serif text-sm tracking-wide opacity-70 max-w-md leading-relaxed">
                         Anakhe invites you to explore spaces that breathe.
                         We do not sell products; we commission stories.
                     </p>
@@ -18,7 +18,7 @@ export function SanctuaryFooter() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 text-sm font-sans tracking-wide opacity-80">
+                <div className="grid grid-cols-2 gap-8 text-sm font-serif tracking-wide opacity-80">
                     <div className="space-y-4">
                         <h3 className="font-serif text-lg italic text-primary opacity-100">Atelier</h3>
                         <ul className="space-y-2">
@@ -37,7 +37,7 @@ export function SanctuaryFooter() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center text-xs opacity-40 font-sans">
+            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center text-xs opacity-40 font-serif">
                 <p>&copy; {new Date().getFullYear()} Anakhe by Jordan Anais.</p>
                 <p>Designed as a Sanctuary.</p>
             </div>

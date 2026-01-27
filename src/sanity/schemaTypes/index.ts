@@ -6,6 +6,7 @@ import settings from './documents/settings'
 import piece from './documents/piece'
 import project from './documents/project'
 import faq from './documents/faq'
+import { press } from './documents/press'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -18,5 +19,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     piece,
     project,
     faq,
+    press,
   ],
 }

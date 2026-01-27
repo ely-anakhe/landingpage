@@ -20,7 +20,7 @@ export function SpecAccordion({ title, items, content }: SpecAccordionProps) {
                 className="w-full py-4 flex items-center justify-between group"
                 aria-expanded={isOpen}
             >
-                <span className="font-sans text-xs uppercase tracking-widest text-text-main group-hover:text-primary transition-colors">
+                <span className="font-serif text-xs uppercase tracking-widest text-text-main group-hover:text-primary transition-colors">
                     {title}
                 </span>
                 <span className="text-text-main group-hover:text-primary transition-colors">
@@ -37,7 +37,7 @@ export function SpecAccordion({ title, items, content }: SpecAccordionProps) {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                     >
-                        <div className="pb-6 pt-2 text-sm text-muted font-sans font-light leading-relaxed">
+                        <div className="pb-6 pt-2 text-sm text-muted font-serif font-light leading-relaxed">
                             {items && items.length > 0 ? (
                                 <ul className="space-y-1">
                                     {items.map((item, idx) => (
@@ -45,7 +45,7 @@ export function SpecAccordion({ title, items, content }: SpecAccordionProps) {
                                     ))}
                                 </ul>
                             ) : (
-                                <p>{content}</p>
+                                <div>{content}</div>
                             )}
                         </div>
                     </motion.div>

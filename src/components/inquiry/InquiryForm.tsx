@@ -48,12 +48,18 @@ export function InquiryForm() {
     const onSubmit = async (data: FormValues) => {
         setIsSubmitting(true)
         try {
+            const formData = new FormData()
+            formData.append("name", data.name)
+            formData.append("email", data.email)
+            if (data.message) formData.append("message", data.message)
+            if (data.pieceContext) formData.append("pieceContext", data.pieceContext)
+
+
+
+
             const response = await fetch("/api/inquire", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
+                body: formData,
             })
 
             if (!response.ok) {
@@ -80,7 +86,7 @@ export function InquiryForm() {
         return (
             <div className="flex flex-col items-center justify-center h-full py-12 text-center animate-in fade-in duration-300">
                 <p className="font-serif text-xl italic text-primary mb-2">Thank you.</p>
-                <p className="text-muted/60 font-sans text-sm">We'll be in touch shortly.</p>
+                <p className="text-muted/60 font-serif text-sm">We'll be in touch shortly.</p>
             </div>
         )
     }

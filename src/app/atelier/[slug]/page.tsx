@@ -8,6 +8,7 @@ import { SpecAccordion } from "@/components/atelier/SpecAccordion";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { PageNavigation } from "@/components/ui/PageNavigation";
 
 export const revalidate = 60;
 
@@ -26,10 +27,16 @@ export default async function PiecePage({
     // ...
 
     // ... inside function
-    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects, relatedFAQs, video } = piece;
+    // ... inside function
+    const { title, priceDisplay, shortDescription, mainImage, specifications, bespokeOptions, relatedProjects, relatedFAQs, video, neighbors } = piece;
+
+    const currentIndex = neighbors?.findIndex((n: any) => n.slug === slug) ?? -1;
+    const prev = currentIndex > 0 ? neighbors[currentIndex - 1] : null;
+    const next = currentIndex < (neighbors?.length ?? 0) - 1 ? neighbors[currentIndex + 1] : null;
 
     return (
-        <article className="min-h-screen">
+        <article className="min-h-screen relative">
+
             <Container className="py-12 md:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 relative">
 
@@ -66,7 +73,7 @@ export default async function PiecePage({
                             )}
                         </div>
 
-                        <div className="prose prose-p:font-sans prose-p:font-light prose-p:text-text-main/80 mb-12">
+                        <div className="prose font-serif prose-p:font-serif [&_p]:font-serif prose-p:font-light prose-p:text-text-main/80 mb-12">
                             <p>{shortDescription}</p>
                         </div>
 

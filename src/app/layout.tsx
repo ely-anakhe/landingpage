@@ -44,8 +44,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const settings = await client.fetch(SETTINGS_QUERY);
-  // const settings = null;
+  let settings = null;
+  try {
+    settings = await client.fetch(SETTINGS_QUERY);
+  } catch (error) {
+    console.error("Failed to fetch settings during layout generation:", error);
+    // Fallback to null; components handle optional chaining.
+  }
 
   return (
     <html lang="en" className="scroll-smooth">

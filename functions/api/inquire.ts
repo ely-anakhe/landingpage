@@ -1,19 +1,13 @@
-export const runtime = 'edge';
-
-import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import * as z from 'zod'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+interface Env {
+    RESEND_API_KEY: string;
+}
 
-const formSchema = z.object({
-    name: z.string().min(2),
-    email: z.string().email(),
-    message: z.string().optional(),
-    pieceContext: z.string().optional(),
-})
+export const onRequestPost: PagesFunction<Env> = async (context) => {
+    const { request, env } = context;
 
-export async function POST(request: Request) {
     try {
         const formData = await request.formData()
 
@@ -25,8 +19,20 @@ export async function POST(request: Request) {
 
         // Validate basic fields
         if (!name || !email) {
-            return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+            return new Response(JSON.stringify({ error: "Missing required fields" }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' }
+            });
         }
+
+        if (!env.RESEND_API_KEY) {
+            return new Response(JSON.stringify({ error: "Configuration error" }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
+        const resend = new Resend(env.RESEND_API_KEY)
 
         const emailOptions: any = {
             from: 'Anakhe Website <onboarding@resend.dev>',
@@ -58,12 +64,24 @@ export async function POST(request: Request) {
 
         const data = await resend.emails.send(emailOptions)
 
-        return NextResponse.json({ success: true, data })
-    } catch (error) {
+        // Check if data contains error (Resend sometimes returns error object in data)
+        if (data.error) {
+            throw new Error(data.error.message);
+        }
+
+        return new Response(JSON.stringify({ success: true, data }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+    } catch (error: any) {
         console.error('Inquiry error:', error)
-        return NextResponse.json(
-            { error: 'Failed to send inquiry' },
-            { status: 500 }
-        )
+        return new Response(JSON.stringify({
+            error: 'Failed to send inquiry',
+            details: error?.message || String(error)
+        }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 }

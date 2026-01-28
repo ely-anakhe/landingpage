@@ -1,16 +1,13 @@
 import { Container } from "@/components/ui/Container";
 
 
-import { sanityFetch } from "@/sanity/lib/live";
+import { client } from "@/sanity/lib/client";
 import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries";
 import { LegalContent } from "@/components/ui/LegalContent";
 
 
 export default async function PrivacyPage() {
-    const { data: page } = await sanityFetch({
-        query: LEGAL_PAGE_QUERY,
-        params: { slug: "privacy-policy" },
-    });
+    const page = await client.fetch(LEGAL_PAGE_QUERY, { slug: "privacy-policy" });
 
     if (page) {
         return (

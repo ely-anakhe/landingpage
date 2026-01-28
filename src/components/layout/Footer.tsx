@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
-import { SETTINGS_QUERY } from "@/sanity/lib/queries";
-import { PortableText } from "next-sanity";
-import { NewsletterForm } from "./NewsletterForm";
+// import { client } from "@/sanity/lib/client";
+// import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 
-export const Footer = async () => {
-    const settings = await client.fetch(SETTINGS_QUERY);
+export const Footer = ({ settings }: { settings: any }) => {
+    // const settings = await client.fetch(SETTINGS_QUERY);
 
     return (
         <footer className="w-full bg-background border-t border-border pt-8 pb-6 px-6 md:px-12">
@@ -22,11 +20,11 @@ export const Footer = async () => {
                     </Link>
 
                     {/* Contact Info from Sanity */}
-                    {settings?.footerContact && (
+                    {/* {settings?.footerContact && (
                         <div className="mt-8 font-serif text-sm text-muted leading-relaxed max-w-xs">
                             <PortableText value={settings.footerContact} />
                         </div>
-                    )}
+                    )} */}
 
                     {/* Social Links from Sanity */}
                     {settings?.socialLinks && settings.socialLinks.length > 0 && (
@@ -109,7 +107,7 @@ export const Footer = async () => {
                     <span className="font-handwriting text-4xl text-text-main/60 -rotate-2 mb-6 block">
                         Newsletter
                     </span>
-                    <NewsletterForm />
+                    {/* <NewsletterForm /> */}
                 </div>
             </div>
 

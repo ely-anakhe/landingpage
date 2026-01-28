@@ -10,7 +10,7 @@ export const metadata = {
     description: "About Jordan Anais and the philosophy behind Anakhe.",
 };
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 export default async function AboutPage() {
     const articles = await client.fetch(PRESS_QUERY);

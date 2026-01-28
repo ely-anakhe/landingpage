@@ -1,7 +1,5 @@
-export const runtime = 'edge';
-
 import { client, urlFor } from "@/sanity/lib/client";
-import { PIECE_DETAIL_QUERY } from "@/sanity/lib/queries";
+import { PIECE_DETAIL_QUERY, ATELIER_QUERY } from "@/sanity/lib/queries";
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -12,7 +10,14 @@ import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { PageNavigation } from "@/components/ui/PageNavigation";
 
-export const revalidate = 60;
+// export const revalidate = 60;
+
+export async function generateStaticParams() {
+    const pieces = await client.fetch(ATELIER_QUERY);
+    return pieces.map((piece: any) => ({
+        slug: piece.slug.current,
+    }));
+}
 
 export default async function PiecePage({
     params,

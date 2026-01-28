@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { type PortableTextBlock } from "sanity";
 
-export const revalidate = 60; // Revalidate every minute
+// export const revalidate = 60; // Revalidate every minute
 
 interface FAQ {
     _id: string;

@@ -3,7 +3,7 @@ import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { Container } from "@/components/ui/Container";
 
-export const revalidate = 60; // Revalidate every minute
+// export const revalidate = 60; // Revalidate every minute
 
 export default async function InteriorsPage() {
     const projects = await client.fetch(PROJECTS_QUERY);

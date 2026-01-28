@@ -4,7 +4,7 @@ import "./globals.css";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { Footer } from "@/components/layout/Footer";
-import { InquiryModal } from "@/components/inquiry/InquiryModal";
+// import { InquiryModal } from "@/components/inquiry/InquiryModal";
 import { Preloader } from "@/components/ui/Preloader";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { client } from "@/sanity/lib/client";
@@ -45,6 +45,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const settings = await client.fetch(SETTINGS_QUERY);
+  // const settings = null;
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -57,7 +58,7 @@ export default async function RootLayout({
 
         <main className="flex-grow pt-24 md:pt-0 w-full min-h-screen flex flex-col relative">
           {children}
-          <Footer /> {/* Kept footer here for now, might need adjustment based on sidebar layout pref */}
+          <Footer settings={settings} />
         </main>
 
         <script
@@ -78,7 +79,7 @@ export default async function RootLayout({
           }}
         />
 
-        <InquiryModal />
+        {/* <InquiryModal /> */}
         <Preloader />
         <Analytics />
       </body>

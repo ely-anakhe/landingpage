@@ -1,14 +1,11 @@
 import { Container } from "@/components/ui/Container";
-import { sanityFetch } from "@/sanity/lib/live";
+import { client } from "@/sanity/lib/client";
 import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries";
 import { LegalContent } from "@/components/ui/LegalContent";
 
 
 export default async function TermsPage() {
-    const { data: page } = await sanityFetch({
-        query: LEGAL_PAGE_QUERY,
-        params: { slug: "terms-of-service" },
-    });
+    const page = await client.fetch(LEGAL_PAGE_QUERY, { slug: "terms-of-service" });
 
     if (page) {
         return (

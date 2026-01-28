@@ -7,7 +7,7 @@ import { PhilosophySection } from "@/components/home/PhilosophySection";
 import { client, urlFor } from "@/sanity/lib/client";
 import { SETTINGS_QUERY, LATEST_PROJECTS_QUERY, FEATURED_PIECES_QUERY } from "@/sanity/lib/queries";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 export default async function Home() {
   const settings = await client.fetch(SETTINGS_QUERY);

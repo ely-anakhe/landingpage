@@ -1,6 +1,6 @@
-import { Studio } from './Studio'
+export const runtime = 'edge';
 
-export const dynamic = 'force-static'
+import { Studio } from './Studio'
 
 export { metadata, viewport } from 'next-sanity/studio'
 

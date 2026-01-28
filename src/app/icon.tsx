@@ -1,9 +1,6 @@
 import { ImageResponse } from 'next/og'
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
 
-// Use Node.js runtime to access the filesystem
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 
 export const size = {
     width: 32,
@@ -12,11 +9,8 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Icon() {
-    // Read the image file from the public directory
-    const filePath = join(process.cwd(), 'public/anakhe-icon-aubergine.jpg')
-    const fileBuffer = await readFile(filePath)
-    const imageSrc = `data:image/jpeg;base64,${fileBuffer.toString('base64')}`
-
+    // For edge runtime, we'll generate a simple branded icon
+    // using the same style as the opengraph image
     return new ImageResponse(
         (
             <div
@@ -26,21 +20,22 @@ export default async function Icon() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    borderRadius: '50%',
-                    overflow: 'hidden',
-                    background: 'transparent',
+                    background: '#4A3728', // Aubergine/brown brand color
                 }}
             >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src={imageSrc}
-                    alt="Anakhe Favicon"
+                <div
                     style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
+                        fontSize: 18,
+                        fontFamily: 'Times New Roman, serif',
+                        color: '#EBE9E4', // Paper color
+                        lineHeight: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                     }}
-                />
+                >
+                    AK
+                </div>
             </div>
         ),
         {

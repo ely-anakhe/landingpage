@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import * as z from 'zod'
@@ -44,11 +46,12 @@ export async function POST(request: Request) {
 
         // Handle attachment if present
         if (attachment && attachment.size > 0) {
-            const buffer = Buffer.from(await attachment.arrayBuffer())
+            const arrayBuffer = await attachment.arrayBuffer()
+            const uint8Array = new Uint8Array(arrayBuffer)
             emailOptions.attachments = [
                 {
                     filename: attachment.name,
-                    content: buffer,
+                    content: uint8Array,
                 },
             ]
         }

@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { client, urlFor } from "@/sanity/lib/client";
 import { PROJECT_DETAIL_QUERY } from "@/sanity/lib/queries";
 import { Container } from "@/components/ui/Container";

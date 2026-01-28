@@ -3,6 +3,7 @@ import { type SchemaTypeDefinition } from 'sanity'
 import blockContent from './objects/blockContent'
 import seo from './objects/seo'
 import settings from './documents/settings'
+import material from './documents/material'
 import piece from './documents/piece'
 import project from './documents/project'
 import faq from './documents/faq'
@@ -18,6 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Documents
     settings,
+    material,
     piece,
     project,
     faq,

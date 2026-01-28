@@ -4,7 +4,7 @@ import "./globals.css";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { Footer } from "@/components/layout/Footer";
-// import { InquiryModal } from "@/components/inquiry/InquiryModal";
+import { InquiryModal } from "@/components/inquiry/InquiryModal";
 import { Preloader } from "@/components/ui/Preloader";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { client } from "@/sanity/lib/client";
@@ -79,7 +79,7 @@ export default async function RootLayout({
           }}
         />
 
-        {/* <InquiryModal /> */}
+        <InquiryModal />
         <Preloader />
       </body>
     </html>

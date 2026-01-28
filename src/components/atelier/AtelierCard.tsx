@@ -24,6 +24,8 @@ export function AtelierCard({ piece }: { piece: PieceProps }) {
                         fill
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        placeholder={mainImage.metadata?.lqip ? "blur" : "empty"}
+                        blurDataURL={mainImage.metadata?.lqip}
                     />
                 )}
             </div>

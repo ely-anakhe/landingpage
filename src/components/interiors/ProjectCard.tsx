@@ -27,6 +27,8 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                         height={heroImage.metadata?.dimensions?.height || 600}
                         className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        placeholder={heroImage.metadata?.lqip ? "blur" : "empty"}
+                        blurDataURL={heroImage.metadata?.lqip}
                     />
                 )}
                 {curatorNote && (

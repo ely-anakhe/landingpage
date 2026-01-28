@@ -61,6 +61,8 @@ export default async function PiecePage({
                                         className="object-cover"
                                         priority
                                         sizes="(max-width: 768px) 100vw, 50vw"
+                                        placeholder={mainImage.metadata?.lqip ? "blur" : "empty"}
+                                        blurDataURL={mainImage.metadata?.lqip}
                                     />
                                 ) : null}
                             </div>

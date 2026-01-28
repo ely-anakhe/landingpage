@@ -1,6 +1,5 @@
 import Link from "next/link";
-// import { client } from "@/sanity/lib/client";
-// import { SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { NewsletterForm } from "./NewsletterForm";
 
 export const Footer = ({ settings }: { settings: any }) => {
     // const settings = await client.fetch(SETTINGS_QUERY);
@@ -107,7 +106,7 @@ export const Footer = ({ settings }: { settings: any }) => {
                     <span className="font-handwriting text-4xl text-text-main/60 -rotate-2 mb-6 block">
                         Newsletter
                     </span>
-                    {/* <NewsletterForm /> */}
+                    <NewsletterForm />
                 </div>
             </div>
 

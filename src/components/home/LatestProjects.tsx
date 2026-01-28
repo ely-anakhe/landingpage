@@ -55,6 +55,8 @@ export function LatestProjects({ projects }: { projects: Project[] }) {
                                             fill
                                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                             sizes="(max-width: 1024px) 100vw, 40vw"
+                                            placeholder={project.heroImage?.metadata?.lqip ? "blur" : "empty"}
+                                            blurDataURL={project.heroImage?.metadata?.lqip}
                                         />
                                     )}
                                 </div>
@@ -76,6 +78,8 @@ export function LatestProjects({ projects }: { projects: Project[] }) {
                                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                         priority
                                         sizes="(max-width: 1024px) 100vw, 60vw"
+                                        placeholder={mainProject.heroImage?.metadata?.lqip ? "blur" : "empty"}
+                                        blurDataURL={mainProject.heroImage?.metadata?.lqip}
                                     />
                                 )}
 

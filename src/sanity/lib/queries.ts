@@ -14,6 +14,16 @@ export const PROJECTS_QUERY = defineQuery(`
 
 `);
 
+export const MATERIALS_QUERY = defineQuery(`
+  *[_type == "material"] | order(order asc) {
+    _id,
+    title,
+    description,
+    "image": image.asset->{..., metadata},
+    order
+  }
+`);
+
 export const LATEST_PROJECTS_QUERY = defineQuery(`
   *[_type == "project"] | order(year desc)[0...3] {
     _id, 

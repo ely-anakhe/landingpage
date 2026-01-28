@@ -21,6 +21,8 @@ export function ArtistShowcase({ image }: ArtistShowcaseProps) {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 40vw"
+                                placeholder={image?.asset?.metadata?.lqip ? "blur" : "empty"}
+                                blurDataURL={image?.asset?.metadata?.lqip}
                             />
                         </Link>
 

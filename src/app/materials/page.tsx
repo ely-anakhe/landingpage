@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
+import { client, urlFor } from "@/sanity/lib/client";
+import { MATERIALS_QUERY } from "@/sanity/lib/queries";
 
-export default function MaterialsPage() {
+export default async function MaterialsPage() {
+    const materials = await client.fetch(MATERIALS_QUERY);
     return (
         <main className="bg-background min-h-screen">
             {/* Component 1: The Manifesto Hero (Revised) */}
@@ -48,95 +51,39 @@ export default function MaterialsPage() {
 
             {/* Component 2: The Materials Grid (Adjusted for blending) */}
             <section className="w-full">
+                {materials.map((material: any, index: number) => {
+                    const isEven = index % 2 === 0;
+                    // Even: Text Left, Image Right
+                    // Odd: Image Left, Text Right
 
-                {/* Item 1: Timber (Text Left, Image Right) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
-                    <div className="bg-background p-12 lg:p-24 flex flex-col justify-center order-2 md:order-1">
-                        <Reveal>
-                            <h3 className="font-serif text-4xl mb-6 text-primary">Renewable Timber</h3>
-                            <div className="prose prose-lg font-serif text-muted">
-                                <p>
-                                    Wood is not a surface; it is a structure. It breathes. It moves. We use timber sourced from forests managed with the logic of continuity. To destroy the source of one’s craft is not just unethical; it is irrational. We take only what the earth can replace, ensuring the cycle of creation remains unbroken.
-                                </p>
+                    return (
+                        <div key={material._id} className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+                            {/* Text Column */}
+                            <div className={`bg-background p-12 lg:p-24 flex flex-col justify-center ${isEven ? 'order-2 md:order-1' : 'order-2'}`}>
+                                <Reveal>
+                                    <h3 className="font-serif text-4xl mb-6 text-primary">{material.title}</h3>
+                                    <div className="prose prose-lg font-serif text-muted">
+                                        <p>{material.description}</p>
+                                    </div>
+                                </Reveal>
                             </div>
-                        </Reveal>
-                    </div>
-                    <div className="relative h-[60vh] md:h-auto min-h-[400px] w-full order-1 md:order-2">
-                        <Image
-                            src="/material_timber.png"
-                            alt="Renewable Timber"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                </div>
 
-                {/* Item 2: Quartz (Image Left, Text Right) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
-                    <div className="relative h-[60vh] md:h-auto min-h-[400px] w-full">
-                        <Image
-                            src="/material_quartz.png"
-                            alt="Quartz & Stone"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="bg-background p-12 lg:p-24 flex flex-col justify-center">
-                        <Reveal>
-                            <h3 className="font-serif text-4xl mb-6 text-primary">Quartz & Stone</h3>
-                            <div className="prose prose-lg font-serif text-muted">
-                                <p>
-                                    We demand permanence. Quartz is the earth compressed into absolute solidity. It does not fear use. It does not ask to be handled delicately. It is there to serve the purpose of the room—to hold weight, to endure heat, to survive the friction of living without eroding.
-                                </p>
+                            {/* Image Column */}
+                            <div className={`relative h-[60vh] md:h-auto min-h-[400px] w-full ${isEven ? 'order-1 md:order-2' : 'order-1'}`}>
+                                {material.image && (
+                                    <Image
+                                        src={urlFor(material.image).url()}
+                                        alt={material.title || "Material Image"}
+                                        fill
+                                        className="object-cover"
+                                        placeholder={material.image?.metadata?.lqip ? "blur" : "empty"}
+                                        blurDataURL={material.image?.metadata?.lqip}
+                                    />
+                                )}
                             </div>
-                        </Reveal>
-                    </div>
-                </div>
-
-                {/* Item 3: Linen (Text Left, Image Right) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
-                    <div className="bg-background p-12 lg:p-24 flex flex-col justify-center order-2 md:order-1">
-                        <Reveal>
-                            <h3 className="font-serif text-4xl mb-6 text-primary">Pure Linen</h3>
-                            <div className="prose prose-lg font-serif text-muted">
-                                <p>
-                                    Linen is not synthesized in a lab; it is grown from the soil. It possesses a tensile strength that synthetic fibers cannot mimic. It has a texture that engages the hand—cool, crisp, and unpretentious. It does not hide its weave; it declares it.
-                                </p>
-                            </div>
-                        </Reveal>
-                    </div>
-                    <div className="relative h-[60vh] md:h-auto min-h-[400px] w-full order-1 md:order-2">
-                        <Image
-                            src="/material_linen.png"
-                            alt="Pure Linen"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                </div>
-
-                {/* Item 4: Velvet (Image Left, Text Right) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
-                    <div className="relative h-[60vh] md:h-auto min-h-[400px] w-full">
-                        <Image
-                            src="/material_velvet.png"
-                            alt="Cotton Velvet"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="bg-background p-12 lg:p-24 flex flex-col justify-center">
-                        <Reveal>
-                            <h3 className="font-serif text-4xl mb-6 text-primary">Cotton Velvet</h3>
-                            <div className="prose prose-lg font-serif text-muted">
-                                <p>
-                                    We reject synthetics that shine cheaply. We choose cotton velvet for its depth. It absorbs light rather than reflecting it. It offers a softness that is substantial, not flimsy. It wears its history, marking the passage of time and the comfort of its owner.
-                                </p>
-                            </div>
-                        </Reveal>
-                    </div>
-                </div>
-
+                        </div>
+                    );
+                })}
             </section>
 
             {/* Component 4: The Closer */}

@@ -31,6 +31,8 @@ export function PhilosophySection({ image, text }: PhilosophySectionProps) {
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        placeholder={image.asset?.metadata?.lqip ? "blur" : "empty"}
+                        blurDataURL={image.asset?.metadata?.lqip}
                     />
                 ) : (
                     <div className="absolute inset-0 bg-neutral-300 animate-pulse" />

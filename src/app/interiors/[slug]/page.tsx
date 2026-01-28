@@ -61,6 +61,8 @@ export default async function ProjectPage({
                         fill
                         className="object-cover"
                         priority
+                        placeholder={heroImage.metadata?.lqip ? "blur" : "empty"}
+                        blurDataURL={heroImage.metadata?.lqip}
                     />
                 ) : null}
             </div>

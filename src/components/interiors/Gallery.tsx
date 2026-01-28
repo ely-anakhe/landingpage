@@ -37,6 +37,8 @@ export function Gallery({ images, projectTitle }: GalleryProps) {
                         fill
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        placeholder={image.metadata?.lqip ? "blur" : "empty"}
+                        blurDataURL={image.metadata?.lqip}
                     />
 
                     {/* Handwritten Note Overlay */}

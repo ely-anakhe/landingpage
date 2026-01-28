@@ -20,6 +20,8 @@ export function MaterialsSection({ image }: MaterialsSectionProps) {
                             fill
                             className="object-cover grayscale-[20%]"
                             sizes="(max-width: 768px) 100vw, 80vw"
+                            placeholder={image.asset?.metadata?.lqip ? "blur" : "empty"}
+                            blurDataURL={image.asset?.metadata?.lqip}
                         />
                     ) : (
                         <div className="w-full h-full bg-neutral-200 flex items-center justify-center text-muted font-serif italic opacity-50">

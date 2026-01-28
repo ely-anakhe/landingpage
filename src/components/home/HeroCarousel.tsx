@@ -85,6 +85,7 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
                                             fill
                                             className="object-cover"
                                             priority
+                                            sizes="100vw"
                                             placeholder={item.asset?.metadata?.lqip ? "blur" : "empty"}
                                             blurDataURL={item.asset?.metadata?.lqip}
                                         />

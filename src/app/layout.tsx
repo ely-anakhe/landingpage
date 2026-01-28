@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-import { Analytics } from "@vercel/analytics/react";
+
 
 export default async function RootLayout({
   children,
@@ -81,7 +81,6 @@ export default async function RootLayout({
 
         {/* <InquiryModal /> */}
         <Preloader />
-        <Analytics />
       </body>
     </html>
   );

@@ -1,0 +1,36 @@
+# Security Headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache Rules for Next.js Static Assets (Immutable)
+# These files have hashes in their names and never change
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache Rules for Global CSS (if generated with hashes)
+# Next.js usually puts these in _next/static/css but this is a fallback for root assets
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache Rules for Images in public folder (Manual Cache Control)
+# We responsibly cache these for a month, assuming manual invalidation if changed
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000
+/*.ico
+  Cache-Control: public, max-age=2592000
+
+# HTML Files / Routes
+# We want these to be revalidated reasonably often (e.g. every hour or on navigation)
+# Cloudflare Pages default is usually fine (0 or short cache), but we can be explicit if needed.
+# For static exports, 'public, max-age=0, must-revalidate' ensures clients check for updates.
+/*
+  ! Cache-Control

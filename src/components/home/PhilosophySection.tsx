@@ -27,7 +27,7 @@ export function PhilosophySection({ image, text }: PhilosophySectionProps) {
                 {image ? (
                     <Image
                         src={urlFor(image).url()}
-                        alt="Philosophy Texture"
+                        alt={image.alt || "Philosophy Texture"}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"

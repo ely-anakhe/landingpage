@@ -1,6 +1,34 @@
 import { Container } from "@/components/ui/Container";
+import { sanityFetch } from "@/sanity/lib/live";
+import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries";
+import { LegalContent } from "@/components/ui/LegalContent";
 
-export default function TermsPage() {
+
+export default async function TermsPage() {
+    const { data: page } = await sanityFetch({
+        query: LEGAL_PAGE_QUERY,
+        params: { slug: "terms-of-service" },
+    });
+
+    if (page) {
+        return (
+            <Container className="py-24 min-h-[60vh]">
+                <header className="mb-20 text-center">
+                    <h1 className="font-serif text-4xl md:text-5xl text-text-main mb-2">
+                        {page.title}
+                    </h1>
+                    <p className="font-serif text-xs uppercase tracking-[0.2em] text-muted">
+                        Last Updated: {new Date(page.lastUpdated).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </p>
+                </header>
+
+                <div className="max-w-3xl mx-auto">
+                    <LegalContent content={page.content} />
+                </div>
+            </Container>
+        );
+    }
+
     return (
         <Container className="py-24 min-h-[60vh]">
             <header className="mb-20 text-center">
@@ -124,6 +152,16 @@ export default function TermsPage() {
                         <p>UB9 6LU, United Kingdom</p>
                         <p>Email: <strong>contact@anakhe.com</strong></p>
                     </div>
+                </section>
+
+                <section className="mb-8">
+                    <h3 className="text-xl mb-4">12. THIRD-PARTY LINKS AND RESOURCES</h3>
+                    <p className="mb-4">
+                        12.1. External Websites: This Service may contain links to third-party web sites or services that are not owned or controlled by Anakhe Ltd, including the portfolio website jordananais.com.
+                    </p>
+                    <p>
+                        12.2. Limitation of Liability: Anakhe Ltd has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that Anakhe Ltd shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such web sites or services.
+                    </p>
                 </section>
             </div>
         </Container>

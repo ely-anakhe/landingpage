@@ -37,6 +37,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+import { Analytics } from "@vercel/analytics/react";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -58,8 +60,27 @@ export default async function RootLayout({
           <Footer /> {/* Kept footer here for now, might need adjustment based on sidebar layout pref */}
         </main>
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Anakhe Ltd by Jordan Anais",
+              description: "Interior design studio",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "London",
+                addressCountry: "UK",
+              },
+              sameAs: settings?.socialLinks?.map((link: any) => link.url) || [],
+            }),
+          }}
+        />
+
         <InquiryModal />
         <Preloader />
+        <Analytics />
       </body>
     </html>
   );

@@ -7,6 +7,8 @@ import piece from './documents/piece'
 import project from './documents/project'
 import faq from './documents/faq'
 import { press } from './documents/press'
+import legal from './documents/legal'
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +22,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     project,
     faq,
     press,
+    legal,
+
   ],
 }

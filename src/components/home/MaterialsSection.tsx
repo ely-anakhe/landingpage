@@ -16,7 +16,7 @@ export function MaterialsSection({ image }: MaterialsSectionProps) {
                     {image ? (
                         <Image
                             src={urlFor(image).url()}
-                            alt="The Integrity of Matter"
+                            alt={image.alt || "The Integrity of Matter"}
                             fill
                             className="object-cover grayscale-[20%]"
                             sizes="(max-width: 768px) 100vw, 80vw"

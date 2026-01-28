@@ -80,7 +80,7 @@ export default async function ProjectPage({
                         )}
 
                         {/* Gallery */}
-                        {gallery && gallery.length > 0 && <Gallery images={gallery} />}
+                        {gallery && gallery.length > 0 && <Gallery images={gallery} projectTitle={title} />}
                     </div>
                 </div>
 

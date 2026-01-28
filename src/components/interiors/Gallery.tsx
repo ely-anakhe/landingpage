@@ -5,6 +5,7 @@ import { urlFor } from "@/sanity/lib/client";
 
 interface GalleryProps {
     images: any[];
+    projectTitle?: string;
 }
 
 const getPositionClass = (position?: string) => {
@@ -23,7 +24,7 @@ const getPositionClass = (position?: string) => {
     }
 };
 
-export function Gallery({ images }: GalleryProps) {
+export function Gallery({ images, projectTitle }: GalleryProps) {
     if (!images || images.length === 0) return null;
 
     return (
@@ -32,7 +33,7 @@ export function Gallery({ images }: GalleryProps) {
                 <div key={image._key || index} className="relative aspect-[4/5] bg-surface group overflow-hidden">
                     <Image
                         src={urlFor(image).width(1200).url()}
-                        alt={`Gallery Image ${index + 1}`}
+                        alt={image.alt || (projectTitle ? `${projectTitle} - Gallery Image ${index + 1}` : `Gallery Image ${index + 1}`)}
                         fill
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 50vw"

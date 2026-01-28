@@ -1,6 +1,36 @@
 import { Container } from "@/components/ui/Container";
 
-export default function PrivacyPage() {
+
+import { sanityFetch } from "@/sanity/lib/live";
+import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries";
+import { LegalContent } from "@/components/ui/LegalContent";
+
+
+export default async function PrivacyPage() {
+    const { data: page } = await sanityFetch({
+        query: LEGAL_PAGE_QUERY,
+        params: { slug: "privacy-policy" },
+    });
+
+    if (page) {
+        return (
+            <Container className="py-24 min-h-[60vh]">
+                <header className="mb-20 text-center">
+                    <h1 className="font-serif text-4xl md:text-5xl text-text-main mb-2">
+                        {page.title}
+                    </h1>
+                    <p className="font-serif text-xs uppercase tracking-[0.2em] text-muted">
+                        Last Updated: {new Date(page.lastUpdated).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </p>
+                </header>
+
+                <div className="max-w-3xl mx-auto">
+                    <LegalContent content={page.content} />
+                </div>
+            </Container>
+        );
+    }
+
     return (
         <Container className="py-24 min-h-[60vh]">
             <header className="mb-20 text-center">
@@ -8,7 +38,7 @@ export default function PrivacyPage() {
                     Privacy Policy
                 </h1>
                 <p className="font-serif text-xs uppercase tracking-[0.2em] text-muted">
-                    Last Updated: January 27, 2026
+                    Last Updated: January 28, 2026
                 </p>
             </header>
 
@@ -33,8 +63,22 @@ export default function PrivacyPage() {
                     </ul>
                 </section>
 
+
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">3. How We Use Your Data</h3>
+                    <h3 className="text-xl mb-4">3. Marketing and Communications</h3>
+                    <p className="mb-4">
+                        <strong>3.1. Lawful Basis for Processing:</strong> We process your personal data (specifically, your email address) for marketing purposes based on your explicit consent, which is obtained when you voluntarily subscribe to our newsletter via the website.
+                    </p>
+                    <p className="mb-4">
+                        <strong>3.2. Third-Party Data Processors:</strong> We utilize Resend Inc. ("Resend") to manage our email subscriber lists and deliver communications. Resend is a third-party service provider based in the United States. By subscribing, you acknowledge and agree that your personal data will be transferred to, stored, and processed by Resend in accordance with their Privacy Policy and standard contractual clauses ensuring an adequate level of protection as required by the UK GDPR.
+                    </p>
+                    <p>
+                        <strong>3.3. Withdrawal of Consent:</strong> You retain the right to withdraw your consent to marketing communications at any time. This can be exercised by clicking the "Unsubscribe" link provided in the footer of any email correspondence from us. Upon withdrawal, your data will be removed from our active marketing lists within a reasonable timeframe.
+                    </p>
+                </section>
+
+                <section className="mb-8">
+                    <h3 className="text-xl mb-4">4. How We Use Your Data</h3>
                     <p className="mb-4">We will only use your personal data when the law allows us to. Most commonly, we use your data in the following circumstances:</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>To Respond to Inquiries:</strong> To process the specific requests you submit regarding our furniture pieces or interior projects.</li>
@@ -44,7 +88,7 @@ export default function PrivacyPage() {
                 </section>
 
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">4. Third-Party Services (Our Infrastructure)</h3>
+                    <h3 className="text-xl mb-4">5. Third-Party Services (Our Infrastructure)</h3>
                     <p className="mb-4">We are a "Headless" digital atelier, meaning we use specialized, secure third-party providers to power our services. We do not sell your data. We share data only with the following trusted partners to function:</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Vercel:</strong> Our hosting provider (delivers the website to your device).</li>
@@ -55,28 +99,28 @@ export default function PrivacyPage() {
                 </section>
 
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">5. Cookies</h3>
+                    <h3 className="text-xl mb-4">6. Cookies</h3>
                     <p>
                         We use a minimal number of cookies strictly necessary for the operation of the website. We do not use aggressive advertising trackers. You can set your browser to refuse all or some browser cookies, though this may affect the functionality of the site.
                     </p>
                 </section>
 
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">6. Data Retention</h3>
+                    <h3 className="text-xl mb-4">7. Data Retention</h3>
                     <p>
                         We will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements.
                     </p>
                 </section>
 
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">7. Your Legal Rights</h3>
+                    <h3 className="text-xl mb-4">8. Your Legal Rights</h3>
                     <p>
                         Under data protection laws (GDPR), you have rights in relation to your personal data, including the right to request access, correction, erasure, restriction, transfer, or to object to processing.
                     </p>
                 </section>
 
                 <section className="mb-8">
-                    <h3 className="text-xl mb-4">8. Contact Us</h3>
+                    <h3 className="text-xl mb-4">9. Contact Us</h3>
                     <p className="mb-4">If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
                     <div className="pl-5 border-l-2 border-border/50">
                         <p className="font-bold">Anakhe Ltd</p>
@@ -90,3 +134,4 @@ export default function PrivacyPage() {
         </Container>
     );
 }
+

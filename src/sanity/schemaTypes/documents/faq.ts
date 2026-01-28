@@ -25,6 +25,7 @@ export default defineType({
             type: "string",
             options: {
                 list: [
+                    "The Studio",
                     "Ordering & Lead Times",
                     "Shipping & Delivery",
                     "Bespoke & Customization",

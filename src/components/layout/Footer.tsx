@@ -115,7 +115,7 @@ export const Footer = async () => {
 
             {/* Legal Disclaimer */}
             <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs font-serif tracking-widest text-gray-400 uppercase">
-                <span>&copy; {new Date().getFullYear()} {settings?.siteTitle || "Anakhe"}. All rights reserved.</span>
+                <span>&copy; {new Date().getFullYear()} Anakhe Ltd. All Rights Reserved. • Company No. 15737599 • VAT No. 0000000</span>
                 <div className="flex gap-x-8 mt-4 md:mt-0">
                     <Link href="/privacy" className="hover:text-text-main transition-colors">Privacy Policy</Link>
                     <Link href="/terms" className="hover:text-text-main transition-colors">Terms of Use</Link>

@@ -8,14 +8,23 @@ export default function sanityImageLoader({ src, width, quality }: { src: string
     // But usually src is passed from sanity image builder url()
     // If str starts with https://cdn.sanity.io, we can append params
 
+    if (!src || typeof src !== 'string') {
+        return src;
+    }
+
     if (src.includes('cdn.sanity.io')) {
-        const url = new URL(src)
-        url.searchParams.set('w', width.toString())
-        if (quality) {
-            url.searchParams.set('q', quality.toString())
+        try {
+            const url = new URL(src)
+            url.searchParams.set('w', width.toString())
+            if (quality) {
+                url.searchParams.set('q', quality.toString())
+            }
+            url.searchParams.set('auto', 'format')
+            return url.href
+        } catch (e) {
+            console.warn('Failed to parse Sanity image URL:', src);
+            return src;
         }
-        url.searchParams.set('auto', 'format')
-        return url.href
     }
 
     return src

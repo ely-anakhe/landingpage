@@ -34,6 +34,7 @@ export default defineType({
             fields: [
                 { name: 'title', type: 'string', title: 'Site Title (Browser Tab)' },
                 { name: 'description', type: 'text', rows: 3, title: 'Meta Description' },
+                { name: 'favicon', type: 'image', title: 'Favicon (Browser Tab Icon)' },
             ],
         }),
         defineField({

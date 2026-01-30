@@ -112,7 +112,8 @@ export const SETTINGS_QUERY = defineQuery(`
     },
     seo{
       title,
-      description
+      description,
+      "favicon": favicon.asset->url
     },
     announcementBar{
       enabled,

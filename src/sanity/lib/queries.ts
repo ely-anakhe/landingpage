@@ -42,7 +42,10 @@ export const PROJECT_DETAIL_QUERY = defineQuery(`
     ...,
     "heroImage": heroImage.asset->{..., metadata},
     "video": video.asset->{playbackId, assetId},
-    "gallery": gallery[].asset->{..., metadata},
+    "gallery": gallery[]{
+        ...,
+        "asset": asset->{..., metadata}
+    },
     "neighbors": *[_type == "project"] | order(year desc) { "slug": slug.current, title }
   }
 `);
@@ -74,8 +77,18 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
   *[_type == "piece" && slug.current == $slug][0] {
     ...,
     "mainImage": mainImage.asset->{..., metadata},
+    "story": story[],
+    "materials": materials[]->{
+      _id,
+      title,
+      description,
+      "image": image.asset->{..., metadata}
+    },
     "video": video.asset->{playbackId, assetId},
-    "gallery": gallery[].asset->{..., metadata},
+    "gallery": gallery[]{
+        ...,
+        "asset": asset->{..., metadata}
+    },
     "relatedFAQs": relatedFAQs[]->{ _id, question, answer },
     "relatedProjects": *[_type == "project" && references(^._id)] {
       _id, 

@@ -54,6 +54,20 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'story',
+            title: 'Story / Narrative',
+            description: 'Rich text narrative for the piece. Replaces short description for the main story.',
+            type: 'array',
+            of: [{ type: 'block' }],
+        }),
+        defineField({
+            name: 'materials', // Field for linked materials
+            title: 'Materials Used',
+            description: 'Link specific materials used in this piece.',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'material' }] }],
+        }),
+        defineField({
             name: 'video',
             title: 'Video display',
             type: 'mux.video',

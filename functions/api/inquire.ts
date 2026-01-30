@@ -36,7 +36,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         const emailOptions: any = {
             from: 'Anakhe Website <onboarding@resend.dev>',
-            to: ['ely@anakhe.com'],
+            to: ['contact@anakhe.com'],
             subject: `New Inquiry from ${name} ${pieceContext ? `regarding ${pieceContext}` : ''}`,
             html: `
         <div>

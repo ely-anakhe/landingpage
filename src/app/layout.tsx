@@ -34,9 +34,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings?.seo?.title || "Anakhe by Jordan Anais",
     description: settings?.seo?.description || "Bespoke interior design studio and furniture atelier.",
-    icons: settings?.seo?.favicon ? {
-      icon: settings.seo.favicon,
-    } : undefined,
+    icons: settings?.seo?.favicon?.asset?.url ? {
+      icon: settings.seo.favicon.asset.url,
+      apple: settings.seo.favicon.asset.url, // Optional: verify if apple touch icon should be different
+    } : undefined
   };
 }
 

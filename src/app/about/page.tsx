@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { client, urlFor } from "@/sanity/lib/client";
-import { PRESS_QUERY } from "@/sanity/lib/queries";
+import { PRESS_QUERY, SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata = {
     title: "About | Anakhe",
@@ -14,6 +14,7 @@ export const metadata = {
 
 export default async function AboutPage() {
     const articles = await client.fetch(PRESS_QUERY);
+    const settings = await client.fetch(SETTINGS_QUERY);
 
     return (
         <article className="min-h-screen bg-background">
@@ -23,10 +24,21 @@ export default async function AboutPage() {
 
                     {/* Portrait Image */}
                     <div className="md:col-span-6 lg:col-span-5 relative aspect-[3/4] bg-surface-dark/5">
-                        {/* Placeholder for Jordan's Portrait */}
-                        <div className="absolute inset-0 flex items-center justify-center text-muted font-serif italic text-lg">
-                            [Portrait Image]
-                        </div>
+                        {/* Jordan's Portrait */}
+                        {settings?.aboutPortrait ? (
+                            <Image
+                                src={urlFor(settings.aboutPortrait).url()}
+                                alt={settings.aboutPortrait.alt || "Jordan Anais"}
+                                fill
+                                className="object-cover grayscale"
+                                placeholder={settings.aboutPortrait.asset?.metadata?.lqip ? "blur" : "empty"}
+                                blurDataURL={settings.aboutPortrait.asset?.metadata?.lqip}
+                            />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center text-muted font-serif italic text-lg opacity-50">
+                                [Portrait Image]
+                            </div>
+                        )}
                     </div>
 
                     {/* Bio Copy */}

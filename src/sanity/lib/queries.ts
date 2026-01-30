@@ -139,6 +139,14 @@ export const SETTINGS_QUERY = defineQuery(`
     artistImage {
       ...,
       asset->{..., metadata}
+    },
+    atelierHeroImage {
+      ...,
+      asset->{..., metadata}
+    },
+    aboutPortrait {
+      ...,
+      asset->{..., metadata}
     }
   }
 `);

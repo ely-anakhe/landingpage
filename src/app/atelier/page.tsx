@@ -1,5 +1,5 @@
-import { client } from "@/sanity/lib/client";
-import { ATELIER_QUERY } from "@/sanity/lib/queries";
+import { client, urlFor } from "@/sanity/lib/client";
+import { ATELIER_QUERY, SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { AtelierCard } from "@/components/atelier/AtelierCard";
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
@@ -10,6 +10,9 @@ import Link from "next/link";
 
 export default async function AtelierPage() {
     const pieces = await client.fetch(ATELIER_QUERY);
+    const settings = await client.fetch(SETTINGS_QUERY);
+
+    const heroImage = settings?.atelierHeroImage;
 
     return (
         <main>
@@ -33,13 +36,25 @@ export default async function AtelierPage() {
             <section className="w-full h-[400px] relative flex items-center justify-center overflow-hidden mt-24">
                 {/* Background */}
                 <div className="absolute inset-0">
-                    <Image
-                        src="/material_quartz.png"
-                        alt="Raw Material Texture"
-                        fill
-                        className="object-cover grayscale sepia-[.2]"
-                        quality={90}
-                    />
+                    {heroImage ? (
+                        <Image
+                            src={urlFor(heroImage).url()}
+                            alt={heroImage.alt || "Raw Material Texture"}
+                            fill
+                            className="object-cover grayscale sepia-[.2]"
+                            quality={90}
+                            placeholder={heroImage.asset?.metadata?.lqip ? "blur" : "empty"}
+                            blurDataURL={heroImage.asset?.metadata?.lqip}
+                        />
+                    ) : (
+                        <Image
+                            src="/material_quartz.png" // Fallback until set in Studio
+                            alt="Raw Material Texture"
+                            fill
+                            className="object-cover grayscale sepia-[.2]"
+                            quality={90}
+                        />
+                    )}
                     <div className="absolute inset-0 bg-black/50 z-10" />
                 </div>
 

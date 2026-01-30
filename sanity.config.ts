@@ -16,7 +16,7 @@ import { structure } from './src/sanity/structure'
 import { muxInput } from 'sanity-plugin-mux-input'
 
 export default defineConfig({
-  basePath: '/studio',
+  basePath: '/studio-admin',
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder

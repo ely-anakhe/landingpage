@@ -26,9 +26,17 @@ export const NewsletterForm = () => {
                 setStatus("success");
                 setEmail("");
             } else {
+                // Log detailed error for debugging
+                const errorData = await response.text();
+                console.error("Newsletter Subscription Failed:", {
+                    status: response.status,
+                    statusText: response.statusText,
+                    error: errorData
+                });
                 setStatus("error");
             }
-        } catch {
+        } catch (error) {
+            console.error("Newsletter Network Error:", error);
             setStatus("error");
         }
     };

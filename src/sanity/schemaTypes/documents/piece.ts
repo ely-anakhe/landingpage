@@ -32,6 +32,45 @@ export default defineType({
             rows: 3,
         }),
         defineField({
+            name: 'story',
+            title: 'Story / Narrative',
+            type: 'blockContent',
+            description: 'The main luxury story/intro for this piece.',
+        }),
+        defineField({
+            name: 'materialsSection',
+            title: 'Materials Section',
+            type: 'object',
+            fields: [
+                defineField({ name: 'heading', type: 'string', title: 'Heading' }),
+                defineField({ name: 'description', type: 'blockContent', title: 'Description' }),
+                defineField({ name: 'image', type: 'image', title: 'Image', options: { hotspot: true } }),
+            ],
+            options: { collapsible: true, collapsed: true }
+        }),
+        defineField({
+            name: 'craftsmanshipSection',
+            title: 'Craftsmanship Section',
+            type: 'object',
+            fields: [
+                defineField({ name: 'heading', type: 'string', title: 'Heading' }),
+                defineField({ name: 'description', type: 'blockContent', title: 'Description' }),
+                defineField({ name: 'image', type: 'image', title: 'Image', options: { hotspot: true } }),
+            ],
+            options: { collapsible: true, collapsed: true }
+        }),
+        defineField({
+            name: 'dimensionsSection',
+            title: 'Dimensions Section',
+            type: 'object',
+            fields: [
+                defineField({ name: 'heading', type: 'string', title: 'Heading' }),
+                defineField({ name: 'description', type: 'blockContent', title: 'Description' }),
+                defineField({ name: 'diagram', type: 'image', title: 'Dimensions Diagram/Image', options: { hotspot: true } }),
+            ],
+            options: { collapsible: true, collapsed: true }
+        }),
+        defineField({
             name: 'specifications',
             title: 'Specifications',
             type: 'array',
@@ -52,20 +91,6 @@ export default defineType({
             options: {
                 hotspot: true,
             },
-        }),
-        defineField({
-            name: 'story',
-            title: 'Story / Narrative',
-            description: 'Rich text narrative for the piece. Replaces short description for the main story.',
-            type: 'array',
-            of: [{ type: 'block' }],
-        }),
-        defineField({
-            name: 'materials', // Field for linked materials
-            title: 'Materials Used',
-            description: 'Link specific materials used in this piece.',
-            type: 'array',
-            of: [{ type: 'reference', to: [{ type: 'material' }] }],
         }),
         defineField({
             name: 'video',

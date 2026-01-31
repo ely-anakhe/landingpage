@@ -77,12 +77,18 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
   *[_type == "piece" && slug.current == $slug][0] {
     ...,
     "mainImage": mainImage.asset->{..., metadata},
-    "story": story[],
-    "materials": materials[]->{
-      _id,
-      title,
-      description,
+    story,
+    materialsSection{
+      ...,
       "image": image.asset->{..., metadata}
+    },
+    craftsmanshipSection{
+      ...,
+      "image": image.asset->{..., metadata}
+    },
+    dimensionsSection{
+      ...,
+      "diagram": diagram.asset->{..., metadata}
     },
     "video": video.asset->{playbackId, assetId},
     "gallery": gallery[]{

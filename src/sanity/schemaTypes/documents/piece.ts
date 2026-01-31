@@ -61,28 +61,28 @@ export default defineType({
         }),
         defineField({
             name: 'dimensionsSection',
-            title: 'Dimensions Section',
+            title: 'Dimensions & Specifications',
             type: 'object',
+            description: 'Configure the dimensions section with size variants and options',
             fields: [
-                defineField({ name: 'heading', type: 'string', title: 'Heading' }),
-                defineField({ name: 'description', type: 'blockContent', title: 'Description' }),
-                defineField({ name: 'diagram', type: 'image', title: 'Dimensions Diagram/Image', options: { hotspot: true } }),
+                defineField({ name: 'heading', type: 'string', title: 'Section Heading', description: 'e.g., "Dimensions & Details"' }),
+                defineField({ name: 'description', type: 'blockContent', title: 'Description (optional)' }),
+                defineField({
+                    name: 'bespokeOptions',
+                    title: 'Bespoke Options',
+                    type: 'array',
+                    of: [{ type: 'string' }],
+                    description: 'e.g., "Custom Upholstery available", "COM accepted"',
+                }),
             ],
-            options: { collapsible: true, collapsed: true }
+            options: { collapsible: true, collapsed: false }
         }),
         defineField({
-            name: 'specifications',
-            title: 'Specifications',
+            name: 'sizeVariants',
+            title: 'Size Variants',
             type: 'array',
-            of: [{ type: 'string' }],
-            description: 'e.g. "H: 80cm", "W: 60cm"',
-        }),
-        defineField({
-            name: 'bespokeOptions',
-            title: 'Bespoke Options',
-            type: 'array',
-            of: [{ type: 'string' }],
-            description: 'e.g. "Custom Upholstery available"',
+            description: 'Add different sizes for this piece (e.g., 2-seater, 3-seater). Each size has its own diagram and specifications.',
+            of: [{ type: 'sizeVariant' }],
         }),
         defineField({
             name: 'mainImage',

@@ -87,7 +87,14 @@ export const PIECE_DETAIL_QUERY = defineQuery(`
       "image": image.asset->{..., metadata}
     },
     dimensionsSection{
-      ...,
+      heading,
+      description,
+      bespokeOptions
+    },
+    sizeVariants[]{
+      _key,
+      name,
+      specs,
       "diagram": diagram.asset->{..., metadata}
     },
     "video": video.asset->{playbackId, assetId},

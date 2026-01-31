@@ -11,11 +11,14 @@ import { press } from './documents/press'
 import legal from './documents/legal'
 
 
+import sizeVariant from './objects/sizeVariant'
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Helpers
     seo,
     blockContent,
+    sizeVariant,
 
     // Documents
     settings,

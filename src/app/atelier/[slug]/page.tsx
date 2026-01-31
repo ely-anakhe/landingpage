@@ -9,6 +9,7 @@ import { PageNavigation } from "@/components/ui/PageNavigation";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
+import { DimensionsSection } from "@/components/atelier/DimensionsSection";
 
 // export const revalidate = 60;
 
@@ -21,10 +22,10 @@ export async function generateStaticParams() {
 
 const portableTextComponents = {
     block: {
-        normal: ({ children }: any) => <p className="mb-4 text-lg md:text-xl font-light leading-relaxed text-text-main/80 font-serif">{children}</p>,
-        h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-serif mb-6 mt-12 text-text-main font-normal">{children}</h2>,
-        h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-serif mb-4 mt-8 text-text-main font-normal italic">{children}</h3>,
-        blockquote: ({ children }: any) => <blockquote className="border-l-2 border-primary pl-6 my-8 italic text-xl md:text-2xl text-text-main/70 font-serif">{children}</blockquote>,
+        normal: ({ children }: any) => <p className="mb-4 text-lg md:text-xl font-light leading-relaxed font-serif">{children}</p>,
+        h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-serif mb-6 mt-12 font-normal">{children}</h2>,
+        h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-serif mb-4 mt-8 font-normal italic">{children}</h3>,
+        blockquote: ({ children }: any) => <blockquote className="border-l-2 border-primary pl-6 my-8 italic text-xl md:text-2xl font-serif opacity-80">{children}</blockquote>,
     },
     marks: {
         serif: ({ children }: { children: React.ReactNode }) => (
@@ -49,7 +50,7 @@ function FeatureSection({ title, description, image, layout = "left", className 
             <Container>
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center ${layout === "right" ? "lg:grid-flow-dense" : ""}`}>
                     {/* Image Column */}
-                    <div className={`relative aspect-[4/5] bg-surface w-full overflow-hidden ${layout === "right" ? "lg:col-start-2" : ""}`}>
+                    <div className={`relative aspect-[4/5] w-full overflow-hidden ${layout === "right" ? "lg:col-start-2" : ""}`}>
                         {image && (
                             <Image
                                 src={urlFor(image).width(1200).url()}
@@ -65,9 +66,9 @@ function FeatureSection({ title, description, image, layout = "left", className 
 
                     {/* Content Column */}
                     <div className={`${layout === "right" ? "lg:col-start-1" : ""}`}>
-                        {title && <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 text-text-main font-normal">{title}</h2>}
+                        {title && <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 font-normal">{title}</h2>}
                         {description && (
-                            <div className="prose prose-lg max-w-none">
+                            <div className="prose prose-lg max-w-none prose-p:font-serif prose-headings:font-serif">
                                 <PortableText value={description} components={portableTextComponents} />
                             </div>
                         )}
@@ -98,9 +99,8 @@ export default async function PiecePage({
         materialsSection,
         craftsmanshipSection,
         dimensionsSection,
+        sizeVariants,
         mainImage,
-        specifications,
-        bespokeOptions,
         relatedProjects,
         relatedFAQs,
         video,
@@ -112,9 +112,13 @@ export default async function PiecePage({
     const prev = currentIndex > 0 ? neighbors[currentIndex - 1] : null;
     const next = currentIndex < (neighbors?.length ?? 0) - 1 ? neighbors[currentIndex + 1] : null;
 
+    // Split gallery for triptych if enough images
+    const triptychImages = gallery && gallery.length >= 3 ? gallery.slice(0, 3) : null;
+    const remainingGallery = gallery && gallery.length > 3 ? gallery.slice(3) : (gallery && gallery.length < 3 ? gallery : []);
+
     return (
-        <article className="min-h-screen bg-background text-text-main overflow-hidden pb-24">
-            {/* Hero Section */}
+        <article className="min-h-screen bg-background text-text-main overflow-hidden">
+            {/* ===== 1. HERO SECTION ===== */}
             <section className="relative h-[85vh] w-full bg-surface overflow-hidden">
                 {video ? (
                     <VideoPlayer playbackId={video.playbackId} className="w-full h-full absolute inset-0 object-cover" />
@@ -131,7 +135,6 @@ export default async function PiecePage({
                     />
                 ) : null}
 
-                {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none" />
 
                 <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 lg:p-24 z-10 flex flex-col md:flex-row items-end justify-between gap-8">
@@ -149,129 +152,49 @@ export default async function PiecePage({
                         label="Inquire"
                         piece={{ title: piece.title, slug: piece.slug }}
                         variant="ghost"
-                        className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white hover:text-black transition-all px-8 py-4 text-lg font-serif italic min-w-[200px]"
+                        className="bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-black transition-all px-8 py-4 text-lg font-serif italic min-w-[200px]"
                     />
                 </div>
             </section>
 
-            {/* Introduction / Story */}
+            {/* ===== 2. STORY / MANIFESTO (Large + Small Font) ===== */}
             <section className="py-24 md:py-32 bg-background">
                 <Container>
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="prose prose-xl prose-p:font-serif prose-p:font-light prose-headings:font-serif mx-auto">
-                            {story ? (
+                        {story ? (
+                            <div className="prose prose-2xl prose-p:font-serif prose-headings:font-serif mx-auto text-text-main">
                                 <PortableText value={story} components={portableTextComponents} />
-                            ) : (
-                                <p className="text-2xl md:text-3xl font-light leading-relaxed text-text-main/80 font-serif">
-                                    {shortDescription}
-                                </p>
-                            )}
-                        </div>
-                    </div>
-                </Container>
-            </section>
-
-            {/* Materials */}
-            {materialsSection && (
-                <FeatureSection
-                    title={materialsSection.heading || "Materials"}
-                    description={materialsSection.description}
-                    image={materialsSection.image}
-                    layout="left"
-                    className="bg-surface/5"
-                />
-            )}
-
-            {/* Craftsmanship */}
-            {craftsmanshipSection && (
-                <FeatureSection
-                    title={craftsmanshipSection.heading || "Craftsmanship"}
-                    description={craftsmanshipSection.description}
-                    image={craftsmanshipSection.image}
-                    layout="right"
-                />
-            )}
-
-            {/* Dimensions & Specs */}
-            <section className="py-24 md:py-32 bg-surface/10 border-t border-border/50">
-                <Container>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-                        <div className="lg:col-span-5">
-                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-12 text-text-main font-normal">
-                                {dimensionsSection?.heading || "Dimensions & Details"}
-                            </h2>
-
-                            {/* Structured Specs */}
-                            <div className="space-y-12">
-                                {specifications && specifications.length > 0 && (
-                                    <div>
-                                        <h3 className="font-serif text-xl italic text-primary mb-4 border-b border-border pb-2">Specifications</h3>
-                                        <ul className="space-y-2 font-serif text-lg font-light text-text-main/80">
-                                            {specifications.map((spec: string, i: number) => (
-                                                <li key={i}>{spec}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {bespokeOptions && bespokeOptions.length > 0 && (
-                                    <div>
-                                        <h3 className="font-serif text-xl italic text-primary mb-4 border-b border-border pb-2">Bespoke Options</h3>
-                                        <ul className="space-y-2 font-serif text-lg font-light text-text-main/80">
-                                            {bespokeOptions.map((opt: string, i: number) => (
-                                                <li key={i}>{opt}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                <div>
-                                    <h3 className="font-serif text-xl italic text-primary mb-4 border-b border-border pb-2">Delivery</h3>
-                                    <p className="font-serif text-lg font-light text-text-main/80">
-                                        White glove delivery available worldwide. Each piece is made to order.
-                                    </p>
-                                </div>
                             </div>
-                        </div>
-
-                        {/* Dimensions Diagram / Description */}
-                        <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-center">
-                            {dimensionsSection?.description && (
-                                <div className="prose prose-lg mb-12">
-                                    <PortableText value={dimensionsSection.description} components={portableTextComponents} />
-                                </div>
-                            )}
-                            {dimensionsSection?.diagram && (
-                                <div className="relative aspect-square w-full bg-white p-8">
-                                    <Image
-                                        src={urlFor(dimensionsSection.diagram).url()}
-                                        alt="Dimensions Diagram"
-                                        fill
-                                        className="object-contain"
-                                    />
-                                </div>
-                            )}
-                        </div>
+                        ) : shortDescription ? (
+                            <>
+                                {/* Extract first sentence as headline, rest as body */}
+                                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-8 text-text-main">
+                                    {shortDescription.split('.')[0]}.
+                                </h2>
+                                {shortDescription.split('.').length > 1 && (
+                                    <p className="font-serif text-xl md:text-2xl font-light leading-relaxed text-text-main/80">
+                                        {shortDescription.split('.').slice(1).join('.').trim()}
+                                    </p>
+                                )}
+                            </>
+                        ) : null}
                     </div>
                 </Container>
             </section>
 
-            {/* Gallery Grid */}
-            {gallery && gallery.length > 0 && (
-                <section className="py-24">
+            {/* ===== 3. TRIPTYCH GALLERY ===== */}
+            {triptychImages && (
+                <section className="pb-24">
                     <Container>
-                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">Detail Gallery</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {gallery.map((image: any, i: number) => (
-                                <div key={image._key} className="relative aspect-[4/3] bg-surface overflow-hidden group">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {triptychImages.map((image: any, i: number) => (
+                                <div key={image._key} className="relative aspect-[4/5] bg-surface overflow-hidden group">
                                     <Image
-                                        src={urlFor(image).width(1200).url()}
-                                        alt={`Gallery image ${i + 1}`}
+                                        src={urlFor(image).width(800).url()}
+                                        alt={`Detail ${i + 1}`}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        placeholder={image.metadata?.lqip ? "blur" : "empty"}
-                                        blurDataURL={image.metadata?.lqip}
+                                        sizes="(max-width: 768px) 100vw, 33vw"
                                     />
                                 </div>
                             ))}
@@ -280,12 +203,142 @@ export default async function PiecePage({
                 </section>
             )}
 
-            {/* Related FAQs */}
-            {relatedFAQs && relatedFAQs.length > 0 && (
-                <section className="py-16 bg-surface/5">
+            {/* ===== 4. MATERIALS SECTION ===== */}
+            <section className="py-16 md:py-32 bg-surface/30">
+                <Container>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                        {/* Image Column */}
+                        <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface">
+                            {materialsSection?.image ? (
+                                <Image
+                                    src={urlFor(materialsSection.image).width(1200).url()}
+                                    alt={materialsSection.heading || "Materials"}
+                                    fill
+                                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    placeholder={materialsSection.image.metadata?.lqip ? "blur" : "empty"}
+                                    blurDataURL={materialsSection.image.metadata?.lqip}
+                                />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center text-muted font-serif italic text-xl">
+                                    Materials Image
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Content Column */}
+                        <div>
+                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 font-normal">
+                                {materialsSection?.heading || "Natural Materials"}
+                            </h2>
+                            {materialsSection?.description ? (
+                                <div className="prose prose-lg max-w-none prose-p:font-serif prose-headings:font-serif">
+                                    <PortableText value={materialsSection.description} components={portableTextComponents} />
+                                </div>
+                            ) : (
+                                <p className="font-serif text-lg md:text-xl font-light leading-relaxed text-text-main/80">
+                                    We source only the finest organic materials. Each element is chosen for its beauty, durability, and connection to nature.
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            {/* ===== 5. SPECIFICATIONS SECTION (Off-White + Animation) ===== */}
+            <section className="py-24 md:py-32 bg-background border-y border-border/30">
+                <Container>
+                    <DimensionsSection
+                        heading={dimensionsSection?.heading || "Dimensions & Details"}
+                        description={dimensionsSection?.description}
+                        bespokeOptions={dimensionsSection?.bespokeOptions}
+                        sizeVariants={sizeVariants?.map((variant: any) => ({
+                            ...variant,
+                            imageUrl: variant.diagram ? urlFor(variant.diagram).width(1200).url() : undefined
+                        })) || []}
+                    />
+                </Container>
+            </section>
+
+            {/* ===== 6. CRAFTSMANSHIP SECTION ===== */}
+            <section className="py-16 md:py-32 bg-background">
+                <Container>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center lg:grid-flow-dense">
+                        {/* Image Column */}
+                        <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface lg:col-start-2">
+                            {craftsmanshipSection?.image ? (
+                                <Image
+                                    src={urlFor(craftsmanshipSection.image).width(1200).url()}
+                                    alt={craftsmanshipSection.heading || "Craftsmanship"}
+                                    fill
+                                    className="object-cover transition-transform duration-1000 hover:scale-105"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    placeholder={craftsmanshipSection.image.metadata?.lqip ? "blur" : "empty"}
+                                    blurDataURL={craftsmanshipSection.image.metadata?.lqip}
+                                />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center text-muted font-serif italic text-xl">
+                                    Craftsmanship Image
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Content Column */}
+                        <div className="lg:col-start-1">
+                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 font-normal">
+                                {craftsmanshipSection?.heading || "Artisan Craftsmanship"}
+                            </h2>
+                            {craftsmanshipSection?.description ? (
+                                <div className="prose prose-lg max-w-none prose-p:font-serif prose-headings:font-serif">
+                                    <PortableText value={craftsmanshipSection.description} components={portableTextComponents} />
+                                </div>
+                            ) : (
+                                <p className="font-serif text-lg md:text-xl font-light leading-relaxed text-text-main/80">
+                                    Every piece is handcrafted by skilled artisans. The human hand is the only machine we trust.
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            {/* ===== 7. SEEN IN CONTEXT ===== */}
+            {relatedProjects && relatedProjects.length > 0 && (
+                <section className="py-24 bg-surface/20">
                     <Container>
-                        <h2 className="font-serif text-3xl text-center mb-12 font-normal">Common Questions</h2>
-                        <div className="max-w-3xl mx-auto space-y-0">
+                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">Seen In Context</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {relatedProjects.map((project: any) => (
+                                <ProjectCard key={project._id} project={project} />
+                            ))}
+                        </div>
+                    </Container>
+                </section>
+            )}
+
+            {/* ===== 8. CTA SECTION ===== */}
+            <section className="py-32 bg-primary/10 text-text-main text-center border-y border-border/30">
+                <Container>
+                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-normal">Does this belong in your space?</h2>
+                    <p className="font-serif text-xl md:text-2xl font-light text-text-main/70 mb-12 max-w-2xl mx-auto">
+                        Every piece is made to order. Begin your journey with a conversation.
+                    </p>
+                    <div className="flex flex-col md:flex-row justify-center gap-6">
+                        <OpenInquiryButton
+                            label="Start a Dialogue"
+                            piece={{ title: piece.title, slug: piece.slug }}
+                            className="bg-primary text-white hover:bg-primary-dark transition-all px-12 py-4 text-xl font-serif italic"
+                        />
+                    </div>
+                </Container>
+            </section>
+
+            {/* ===== 9. FAQ SECTION ===== */}
+            {relatedFAQs && relatedFAQs.length > 0 && (
+                <section className="py-24 bg-background">
+                    <Container>
+                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">Common Questions</h2>
+                        <div className="max-w-3xl mx-auto space-y-0 border-t border-border">
                             {relatedFAQs.map((faq: any) => (
                                 <FaqAccordion
                                     key={faq._id}
@@ -298,22 +351,30 @@ export default async function PiecePage({
                 </section>
             )}
 
-            {/* Related Projects Context */}
-            {relatedProjects && relatedProjects.length > 0 && (
+            {/* ===== REMAINING GALLERY (if more than 3 images) ===== */}
+            {remainingGallery && remainingGallery.length > 0 && (
                 <section className="py-24 border-t border-border">
                     <Container>
-                        <h2 className="font-serif text-3xl text-center mb-16 font-normal">Seen In Context</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {relatedProjects.map((project: any) => (
-                                <ProjectCard key={project._id} project={project} />
+                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">More Details</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {remainingGallery.map((image: any, i: number) => (
+                                <div key={image._key} className="relative aspect-[4/3] bg-surface overflow-hidden group">
+                                    <Image
+                                        src={urlFor(image).width(1200).url()}
+                                        alt={`Gallery ${i}`}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                    />
+                                </div>
                             ))}
                         </div>
                     </Container>
                 </section>
             )}
 
-            {/* Navigation */}
-            <Container className="pt-12">
+            {/* ===== NAVIGATION ===== */}
+            <Container className="py-12 bg-background">
                 <PageNavigation
                     prev={prev}
                     next={next}

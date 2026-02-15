@@ -40,17 +40,19 @@ export function ArtistShowcase({ image }: ArtistShowcaseProps) {
 
                             <div className="space-y-6 text-gray-600 font-serif text-lg leading-relaxed">
                                 <p>
-                                    Jordan Anais is an artist, designer, and tastemaker based in Los
-                                    Angeles. With a background steeped in the classical traditions of
-                                    European architecture and an eye heavily influenced by the raw,
-                                    organic textures of the California coast, Jordan has crafted a
-                                    distinct artistic style that balances refinement with restraint.
+                                    Founded by Jordan Anais, a British designer with an established presence in the health and lifestyle
+                                    sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and
+                                    longevity at their core. Influenced by European heritage and California ease, she approaches each
+                                    project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function
+                                    seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.
                                 </p>
 
                                 <p>
-                                    Inspired by the fusion of Old World elements married with bold,
-                                    modern-day techniques, he has been experimenting with an
-                                    avant-garde approach to classical portraits since 2009.
+                                    A graduate in philosophy from Kings College London, with a masters degree from the London School of
+                                    Economics, her academic foundation informs every aspect of her work. She has long been fascinated by
+                                    the way aesthetics shape human experience and emotion, approaching design as a discipline that
+                                    reflects values, esteem, and a sense of life in order to create an experience that connects the mind
+                                    and body.
                                 </p>
                             </div>
                         </div>

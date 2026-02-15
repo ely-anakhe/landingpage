@@ -129,8 +129,7 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
                     </h1>
 
                     <p className="font-serif text-lg md:text-xl text-foreground/80 max-w-lg mx-auto leading-relaxed font-light">
-                        We do not furnish rooms. We curate conviction.
-                        Enter the conviction engine.
+                        Multidisciplinary design studio specialising in refined, emotive spaces.
                     </p>
                 </motion.div>
             </div>

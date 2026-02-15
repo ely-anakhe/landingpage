@@ -31,10 +31,10 @@ export function AtelierSection({ pieces }: AtelierSectionProps) {
                                 The Atelier
                             </span>
                             <h2 className="font-serif text-4xl text-text-main mb-6">
-                                The Collection
+                                Furniture Collections
                             </h2>
                             <p className="font-serif text-muted italic leading-relaxed">
-                                Furniture that bridges the gap between the functional and the sculptural.
+                                We commission hand made furniture that bridges the gap between functional and sculptural.
                                 <br />
                                 <br />
                                 Made by hand.

@@ -31,8 +31,7 @@ export function Hero() {
                     transition={{ delay: 0.6, duration: 1 }}
                     className="font-serif text-lg md:text-xl text-foreground/80 max-w-lg mx-auto leading-relaxed"
                 >
-                    We do not furnish rooms. We curate conviction.
-                    Enter the conviction engine.
+                    Multidisciplinary design studio specialising in refined, emotive spaces.
                 </motion.p>
             </motion.div>
 

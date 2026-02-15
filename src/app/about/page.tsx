@@ -50,20 +50,20 @@ export default async function AboutPage() {
                         <div className="space-y-8 font-serif font-light text-text-main/80 text-lg leading-relaxed text-justify">
                             <p>
                                 <span className="float-left text-7xl leading-[0.8] pr-4 pt-2 font-serif">J</span>
-                                ordan Anais is an artist, designer, and tastemaker based in Los Angeles.
-                                With a background steeped in the classical traditions of European architecture and an eye heavily influenced by the raw, organic textures of the California coast, Jordan has crafted a distinct artistic style that balances refinement with restraint.
+                                ordan Anais, a British designer with an established presence in the health and lifestyle
+                                sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and
+                                longevity at their core. Influenced by European heritage and California ease, she approaches each
+                                project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function
+                                seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.
+
                             </p>
 
                             <p>
-                                After founding Anakhe in 2024, Jordan began working to redefine the concept of the modern sanctuary. Not merely as a physical space, but as an emotional landscape where silence, texture, and light converge to create a sense of profound stillness.
-                            </p>
-
-                            <p>
-                                Inspired by the Japanese philosophy of Wabi-Sabi and the timeless elegance of French modernism, Jordan explores an avant-garde approach to interior curation. His work has been featured in leading design publications, celebrating his unique ability to marry the old world with the new.
-                            </p>
-
-                            <p>
-                                He collaborates with artisans globally, ensuring that every piece—from a hand-hewn chair to a bespoke linen sofa—carries the imprint of the human hand and the spirit of its maker.
+                                A graduate in philosophy from Kings College London, with a masters degree from the London School of
+                                Economics, her academic foundation informs every aspect of her work. She has long been fascinated by
+                                the way aesthetics shape human experience and emotion, approaching design as a discipline that
+                                reflects values, esteem, and a sense of life in order to create an experience that connects the mind
+                                and body.
                             </p>
                         </div>
                     </div>

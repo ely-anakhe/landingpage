@@ -29,7 +29,7 @@ export function LatestProjects({ projects }: { projects: Project[] }) {
 
                     {/* Header Section */}
                     <div className="text-center lg:text-left mb-16 lg:mb-auto">
-                        <h2 className="font-serif text-5xl lg:text-6xl text-primary tracking-wide mb-8">
+                        <h2 className="font-serif text-5xl lg:text-6xl text-primary tracking-wide mb-4">
                             OUR PROJECTS
                         </h2>
 
@@ -81,15 +81,6 @@ export function LatestProjects({ projects }: { projects: Project[] }) {
                                         placeholder={mainProject.heroImage?.metadata?.lqip ? "blur" : "empty"}
                                         blurDataURL={mainProject.heroImage?.metadata?.lqip}
                                     />
-                                )}
-
-                                {/* Curator Note Overlay if available */}
-                                {mainProject.curatorNote && (
-                                    <div className="absolute bottom-12 right-12 z-10 transform -rotate-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 hidden md:block">
-                                        <span className="font-handwriting text-3xl text-white drop-shadow-md">
-                                            {mainProject.curatorNote}
-                                        </span>
-                                    </div>
                                 )}
                             </div>
                         </Link>

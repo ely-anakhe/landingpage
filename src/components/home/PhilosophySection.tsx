@@ -9,14 +9,14 @@ interface PhilosophySectionProps {
 
 export function PhilosophySection({ image, text }: PhilosophySectionProps) {
     return (
-        <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+        <section className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
             {/* Left Side (Theory) */}
             <div className="bg-[#4A0404] text-white flex flex-col justify-center p-12 md:p-20 order-2 md:order-1">
                 <div className="max-w-md mx-auto md:mx-0">
                     <h2 className="font-sans uppercase tracking-[0.2em] text-xs mb-8 opacity-70">
                         The Philosophy
                     </h2>
-                    <p className="font-serif text-xl md:text-2xl leading-relaxed">
+                    <p className="font-serif text-3xs md:text-3xs leading-relaxed">
                         {text || "The studio works selectively and collaboratively, favouring depth over volume; each project is treated as a partnership, with careful attention paid to materiality and function. The emphasis is on creating spaces that actively support the physical and emotional wellbeing of those who live and work within them. Anakhe’s aesthetic is rooted in layered textures and meticulous attention to detail, punctuated by bold, unexpected features that bring a sense of uniqueness to each project."}
                     </p>
                 </div>

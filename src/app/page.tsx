@@ -1,7 +1,6 @@
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { LatestProjects } from "@/components/home/LatestProjects";
 import { AtelierSection } from "@/components/home/AtelierSection";
-import { MaterialsSection } from "@/components/home/MaterialsSection";
 import { ArtistShowcase } from "@/components/home/ArtistShowcase";
 import { PhilosophySection } from "@/components/home/PhilosophySection";
 import { client, urlFor } from "@/sanity/lib/client";
@@ -28,8 +27,6 @@ export default async function Home() {
       <div className="w-full flex justify-center bg-surface py-0">
         <div className="w-16 h-px bg-border/20" />
       </div>
-
-      <MaterialsSection image={settings?.materialsImage} />
 
       <ArtistShowcase image={settings?.artistImage} />
 

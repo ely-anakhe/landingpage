@@ -59,9 +59,13 @@ export function ArtistShowcase({ image }: ArtistShowcaseProps) {
 
                         {/* Signature */}
                         <div className="pt-4">
-                            <span className="font-handwriting text-5xl text-text-main block -rotate-3">
-                                Jordan Anais
-                            </span>
+                            <Image
+                                src="/signature.png"
+                                alt="Jordan Anais signature"
+                                width={250}
+                                height={120}
+                                className="mix-blend-multiply opacity-80 -rotate-1"
+                            />
                         </div>
                     </div>
                 </div>

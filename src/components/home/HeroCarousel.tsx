@@ -111,7 +111,7 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
             </div>
 
             {/* Content Section - Below Media */}
-            <div className="w-full bg-background min-h-screen px-6 flex flex-col items-center justify-center text-center">
+            <div className="w-full bg-background min-h-[70vh] px-6 flex flex-col items-center justify-center text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

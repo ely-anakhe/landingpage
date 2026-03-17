@@ -79,12 +79,7 @@ export const Footer = ({ settings }: { settings: any }) => {
                     >
                         Contact
                     </Link>
-                    <Link
-                        href="/common-questions"
-                        className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
-                    >
-                        FAQ
-                    </Link>
+
                     <a
                         href="https://jordananais.com"
                         target="_blank"

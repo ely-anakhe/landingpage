@@ -4,9 +4,13 @@ import { urlFor } from "@/sanity/lib/client";
 
 interface ArtistShowcaseProps {
     image?: any;
+    text?: string;
 }
 
-export function ArtistShowcase({ image }: ArtistShowcaseProps) {
+export function ArtistShowcase({ image, text }: ArtistShowcaseProps) {
+    const defaultText = `Founded by Jordan Anais, a British designer with an established presence in the health and lifestyle sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and longevity at their core. Influenced by European heritage and California ease, she approaches each project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.\n\nA graduate in philosophy from Kings College London, with a masters degree from the London School of Economics, her academic foundation informs every aspect of her work. She has long been fascinated by the way aesthetics shape human experience and emotion, approaching design as a discipline that reflects values, esteem, and a sense of life in order to create an experience that connects the mind and body.`;
+    const paragraphs = (text || defaultText).split('\n').filter((p: string) => p.trim() !== '');
+
     return (
         <section className="bg-background py-32">
             <div className="max-w-6xl mx-auto px-6">
@@ -39,21 +43,9 @@ export function ArtistShowcase({ image }: ArtistShowcaseProps) {
                             </h2>
 
                             <div className="space-y-6 text-gray-600 font-serif text-lg leading-relaxed">
-                                <p>
-                                    Founded by Jordan Anais, a British designer with an established presence in the health and lifestyle
-                                    sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and
-                                    longevity at their core. Influenced by European heritage and California ease, she approaches each
-                                    project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function
-                                    seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.
-                                </p>
-
-                                <p>
-                                    A graduate in philosophy from Kings College London, with a masters degree from the London School of
-                                    Economics, her academic foundation informs every aspect of her work. She has long been fascinated by
-                                    the way aesthetics shape human experience and emotion, approaching design as a discipline that
-                                    reflects values, esteem, and a sense of life in order to create an experience that connects the mind
-                                    and body.
-                                </p>
+                                {paragraphs.map((paragraph, i) => (
+                                    <p key={i}>{paragraph}</p>
+                                ))}
                             </div>
                         </div>
 

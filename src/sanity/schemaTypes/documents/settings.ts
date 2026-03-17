@@ -6,11 +6,6 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
-            name: 'siteTitle',
-            title: 'Site Title',
-            type: 'string',
-        }),
-        defineField({
             name: 'heroContent',
             title: 'Home Hero Content',
             type: 'array',
@@ -64,11 +59,7 @@ export default defineType({
                 }
             ]
         }),
-        defineField({
-            name: 'footerContact',
-            title: 'Footer Contact Info',
-            type: 'blockContent',
-        }),
+
         defineField({
             name: 'socialLinks',
             title: 'Social Links',
@@ -91,48 +82,66 @@ export default defineType({
             title: 'Philosophy Section Image',
             type: 'image',
             options: { hotspot: true },
-            group: 'homeAssets',
+            group: 'homePage',
         }),
         defineField({
-            name: 'materialsImage',
-            title: 'Materials Section Image',
-            type: 'image',
-            options: { hotspot: true },
-            group: 'homeAssets',
+            name: 'philosophyText',
+            title: 'Philosophy Text',
+            type: 'text',
+            rows: 5,
+            group: 'homePage',
+        }),
+        defineField({
+            name: 'founderText',
+            title: 'Founder Text (Home Page)',
+            type: 'text',
+            rows: 7,
+            group: 'homePage',
         }),
         defineField({
             name: 'artistImage',
             title: 'Artist Showcase Image',
             type: 'image',
             options: { hotspot: true },
-            group: 'homeAssets',
+            group: 'homePage',
         }),
         defineField({
-            name: 'atelierHeroImage',
-            title: 'Atelier Page Hero Image',
-            type: 'image',
-            options: { hotspot: true },
-            group: 'homeAssets',
+            name: 'aboutText',
+            title: 'About Page Text',
+            type: 'text',
+            rows: 7,
+            group: 'aboutPage',
+        }),
+        defineField({
+            name: 'aboutPoem',
+            title: 'About Page Quote/Poem',
+            type: 'text',
+            rows: 4,
+            group: 'aboutPage',
         }),
         defineField({
             name: 'aboutPortrait',
             title: 'About Page Portrait',
             type: 'image',
             options: { hotspot: true },
-            group: 'homeAssets', // Could make a new group but reusing homeAssets is simpler for now
+            group: 'aboutPage',
         }),
         defineField({
             name: 'aboutInteriorImage',
             title: 'About Page Interior Image',
             type: 'image',
             options: { hotspot: true },
-            group: 'homeAssets',
+            group: 'aboutPage',
         }),
     ],
     groups: [
         {
-            name: 'homeAssets',
-            title: 'Home Page Assets',
+            name: 'homePage',
+            title: 'Home Page',
+        },
+        {
+            name: 'aboutPage',
+            title: 'About Page',
         },
     ],
 })

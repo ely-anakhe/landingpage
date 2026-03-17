@@ -1,5 +1,5 @@
 import { client } from "@/sanity/lib/client";
-import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+import { PROJECTS_QUERY } from "@/sanity/lib/queries/interiors";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { Container } from "@/components/ui/Container";
 

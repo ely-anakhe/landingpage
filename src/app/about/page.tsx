@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
 import { client, urlFor } from "@/sanity/lib/client";
-import { SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { SETTINGS_QUERY } from "@/sanity/lib/queries/settings";
 
 export const metadata = {
     title: "About | Anakhe",
@@ -12,6 +12,19 @@ export const metadata = {
 
 export default async function AboutPage() {
     const settings = await client.fetch(SETTINGS_QUERY);
+
+    const defaultAboutText = `Jordan Anais, a British designer with an established presence in the health and lifestyle sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and longevity at their core. Influenced by European heritage and California ease, she approaches each project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.\n\nA graduate in philosophy from Kings College London, with a masters degree from the London School of Economics, her academic foundation informs every aspect of her work. She has long been fascinated by the way aesthetics shape human experience and emotion, approaching design as a discipline that reflects values, esteem, and a sense of life in order to create an experience that connects the mind and body.`;
+    const aboutTextRaw = settings?.aboutText || defaultAboutText;
+    const aboutParagraphs = aboutTextRaw.split('\n').filter((p: string) => p.trim() !== '');
+
+    const firstParagraph = aboutParagraphs[0] || '';
+    const dropcapLetter = firstParagraph.charAt(0);
+    const firstParagraphRest = firstParagraph.slice(1);
+    const restParagraphs = aboutParagraphs.slice(1);
+
+    const defaultPoem = `"I don't design to have clients,\nI have clients in order to design"`;
+    const poemRaw = settings?.aboutPoem || defaultPoem;
+    const poemLines = poemRaw.split('\n');
 
     return (
         <article className="min-h-screen bg-background">
@@ -64,22 +77,12 @@ export default async function AboutPage() {
 
                         <div className="space-y-8 font-serif font-light text-text-main/80 text-lg leading-relaxed text-justify">
                             <p>
-                                <span className="float-left text-7xl leading-[0.8] pr-4 pt-2 font-serif">J</span>
-                                ordan Anais, a British designer with an established presence in the health and lifestyle
-                                sphere, the studio carries a unique focus on human wellbeing by crafting interiors with health and
-                                longevity at their core. Influenced by European heritage and California ease, she approaches each
-                                project as both a creative and strategic exercise. Spaces are designed to look beautiful, to function
-                                seamlessly, to age gracefully, and to communicate something meaningful about the people behind them.
-
+                                {dropcapLetter && <span className="float-left text-7xl leading-[0.8] pr-4 pt-2 font-serif">{dropcapLetter}</span>}
+                                {firstParagraphRest}
                             </p>
-
-                            <p>
-                                A graduate in philosophy from Kings College London, with a masters degree from the London School of
-                                Economics, her academic foundation informs every aspect of her work. She has long been fascinated by
-                                the way aesthetics shape human experience and emotion, approaching design as a discipline that
-                                reflects values, esteem, and a sense of life in order to create an experience that connects the mind
-                                and body.
-                            </p>
+                            {restParagraphs.map((p: string, i: number) => (
+                                <p key={i}>{p}</p>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -93,8 +96,12 @@ export default async function AboutPage() {
 
                         <div className="font-serif text-2xl md:text-3xl italic leading-loose text-text-main opacity-80">
                             <p>
-                                "I don't design to have clients,<br />
-                                I have clients in order to design"
+                                {poemLines.map((line: string, i: number) => (
+                                    <span key={i}>
+                                        {line}
+                                        {i !== poemLines.length - 1 && <br />}
+                                    </span>
+                                ))}
                             </p>
                         </div>
 

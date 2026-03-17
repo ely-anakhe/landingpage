@@ -76,7 +76,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                         Welcome to the Anakhe newsletter.
                     </div>
                     <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                        This is where we share the interiors, materials, and idea that shape how a home feels. Expect rare but thoughtful notes from the studio, including insights from ongoing projects, material discoveries, and perspectives on elevated living.
+                        This is where we share the interiors, materials, and ideas that shape how a home feels. Expect rare but thoughtful notes from the studio, including insights from ongoing projects, material discoveries, and perspectives on elevated living.
                     </div>
                     <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
                         We value quality over quantity, and want every email to be worth your time. We hope to offer you a time to pause, observe, and consider your own space differently. Thank you for joining us!

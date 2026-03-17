@@ -1,5 +1,5 @@
 import { client, urlFor } from "@/sanity/lib/client";
-import { PROJECT_DETAIL_QUERY, PROJECTS_QUERY } from "@/sanity/lib/queries";
+import { PROJECT_DETAIL_QUERY, PROJECTS_QUERY } from "@/sanity/lib/queries/interiors";
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
 import { PortableText } from "next-sanity";

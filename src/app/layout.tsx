@@ -8,7 +8,7 @@ import { InquiryModal } from "@/components/inquiry/InquiryModal";
 import { Preloader } from "@/components/ui/Preloader";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { client } from "@/sanity/lib/client";
-import { SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { SETTINGS_QUERY } from "@/sanity/lib/queries/settings";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",

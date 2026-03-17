@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { client, urlFor } from "@/sanity/lib/client";
-import { MATERIALS_QUERY } from "@/sanity/lib/queries";
+import { MATERIALS_QUERY } from "@/sanity/lib/queries/materials";
 
 export const metadata = {
     title: "Materials & Craft | Anakhe",

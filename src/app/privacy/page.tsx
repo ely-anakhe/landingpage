@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 
 
 import { client } from "@/sanity/lib/client";
-import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries";
+import { LEGAL_PAGE_QUERY } from "@/sanity/lib/queries/legal";
 import { LegalContent } from "@/components/ui/LegalContent";
 
 

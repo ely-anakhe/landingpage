@@ -100,13 +100,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                             Anakhe Ltd • London, United Kingdom<br />
                             <a href="https://www.anakhe.com" style="color: #999; text-decoration: underline;">www.anakhe.com</a>
                             <br /><br />
-                            <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #999; text-decoration: underline;">Unsubscribe</a>
+                            <a href="https://anakhe.com/api/unsubscribe?email=${encodeURIComponent(email)}" style="color: #999; text-decoration: underline;">Unsubscribe</a>
                         </div>
                     </div>
                 </div>
             </body>
             </html>
-            `
+            `,
+            headers: {
+                'List-Unsubscribe': `<https://anakhe.com/api/unsubscribe?email=${encodeURIComponent(email)}>`,
+                'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click'
+            }
         });
 
         if (emailError) {

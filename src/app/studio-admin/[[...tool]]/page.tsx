@@ -1,5 +1,4 @@
 import { Studio } from './Studio'
-
 import { Metadata, Viewport } from 'next'
 
 export const metadata: Metadata = {
@@ -23,3 +22,4 @@ export function generateStaticParams() {
 export default function StudioPage() {
   return <Studio />
 }
+

@@ -17,7 +17,9 @@ export function DesktopNav({ navItems = [] }: DesktopNavProps) {
         { label: "Journal", href: "/journal" },
     ];
 
-    const items = navItems?.length > 0 ? navItems : defaultItems;
+    // Hide Atelier while it's not operating
+    const items = (navItems?.length > 0 ? navItems : defaultItems)
+        .filter((item) => item.href !== "/atelier");
     const pathname = usePathname();
 
     return (

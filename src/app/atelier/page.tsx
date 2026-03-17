@@ -8,7 +8,10 @@ import Link from "next/link";
 
 
 
+import { notFound } from "next/navigation";
+
 export default async function AtelierPage() {
+    notFound();
     const pieces = await client.fetch(ATELIER_QUERY);
     const settings = await client.fetch(SETTINGS_QUERY);
 

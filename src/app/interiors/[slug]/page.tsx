@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { Gallery } from "@/components/interiors/Gallery";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { PageNavigation } from "@/components/ui/PageNavigation";
-import { AtelierCard } from "@/components/atelier/AtelierCard";
+
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -112,17 +112,7 @@ export default async function ProjectPage({
                     </div>
                 </div>
 
-                {/* Pieces In This Space */}
-                {linkedPieces && linkedPieces.length > 0 && (
-                    <section className="mt-24 pt-24 border-t border-border/20">
-                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">Pieces In This Space</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-                            {linkedPieces.map((piece: any) => (
-                                <AtelierCard key={piece._id} piece={piece} />
-                            ))}
-                        </div>
-                    </section>
-                )}
+
 
                 <PageNavigation
                     prev={prev}

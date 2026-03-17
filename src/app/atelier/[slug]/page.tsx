@@ -107,6 +107,7 @@ export default async function PiecePage({
 }: {
     params: Promise<{ slug: string }>;
 }) {
+    notFound();
     const { slug } = await params;
     const piece = await client.fetch(PIECE_DETAIL_QUERY, { slug });
 

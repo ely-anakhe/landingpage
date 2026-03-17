@@ -79,14 +79,14 @@ export default async function PrivacyPage() {
                     <p className="mb-4">We will only use your personal data when the law allows us to. Most commonly, we use your data in the following circumstances:</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>To Respond to Inquiries:</strong> To process the specific requests you submit regarding our furniture pieces or interior projects.</li>
-                        <li><strong>To Send Newsletters:</strong> If you have opted-in, to send you our journal updates or atelier news. You can unsubscribe at any time.</li>
+                        <li><strong>To Send Newsletters:</strong> If you have opted-in, to send you our journal updates. You can unsubscribe at any time.</li>
                         <li><strong>For Security & Performance:</strong> To maintain the security of our website and improve user experience.</li>
                     </ul>
                 </section>
 
                 <section className="mb-8">
                     <h3 className="text-xl mb-4">5. Third-Party Services (Our Infrastructure)</h3>
-                    <p className="mb-4">We are a "Headless" digital atelier, meaning we use specialized, secure third-party providers to power our services. We do not sell your data. We share data only with the following trusted partners to function:</p>
+                    <p className="mb-4">We are a "Headless" design studio, meaning we use specialized, secure third-party providers to power our services. We do not sell your data. We share data only with the following trusted partners to function:</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Cloudflare:</strong> Our hosting provider (delivers the website to your device).</li>
                         <li><strong>Sanity.io:</strong> Our content management system (stores text and images).</li>

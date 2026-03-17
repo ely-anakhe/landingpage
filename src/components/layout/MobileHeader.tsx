@@ -19,7 +19,9 @@ export function MobileHeader({ navItems = [] }: MobileHeaderProps) {
         { label: "Journal", href: "/journal" },
     ];
 
-    const items = navItems?.length > 0 ? navItems : defaultItems;
+    // Hide Atelier while it's not operating
+    const items = (navItems?.length > 0 ? navItems : defaultItems)
+        .filter((item) => item.href !== "/atelier");
 
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();

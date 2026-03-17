@@ -48,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         const { data, error: emailError } = await resend.emails.send({
             from: 'Anakhe <studio@anakhe.com>',
             to: email,
-            subject: 'Welcome to the Inner Circle',
+            subject: 'Welcome to Anakhe',
             html: `
             <!DOCTYPE html>
             <html>
@@ -73,18 +73,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
                     <!-- Body -->
                     <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                        Welcome to the Anakhe inner circle.
+                        Welcome to the Anakhe newsletter.
                     </div>
                     <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                        I created this newsletter not to flood your inbox, but to offer a rare pause—a moment to discuss architecture, material integrity, and the aesthetics of the spaces we inhabit.
+                        This is where we share the interiors, materials, and idea that shape how a home feels. Expect rare but thoughtful notes from the studio, including insights from ongoing projects, material discoveries, and perspectives on elevated living.
                     </div>
                     <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                        You can expect to hear from our team infrequently. We only write when we have something significant to say, whether that is the release of a new collection or a look inside a finished commission.
+                        We value quality over quantity, and want every email to be worth your time. We hope to offer you a time to pause, observe, and consider your own space differently. Thank you for joining us!
                     </div>
-                    <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                        We do not decorate. We build. Thank you for building with us.
-                    </div>
-
                     <hr style="border-color: #cccccc; margin: 30px 0; border-width: 0 0 1px 0; border-style: solid;" />
 
                     <!-- Signature -->

@@ -53,11 +53,10 @@ export default async function TermsPage() {
 
                 <section className="mb-8">
                     <h3 className="text-xl mb-4">2. Nature of Our Services</h3>
-                    <p className="mb-4">The Site serves as a digital atelier and portfolio.</p>
+                    <p className="mb-4">The Site serves as a professional portfolio of work.</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li>
-                            <strong>No Direct E-Commerce:</strong> The Site allows you to view our collection and submit inquiries for bespoke
-                            furniture and interior design services. It does not currently facilitate direct online payments or "checkout"
+                            <strong>No Direct E-Commerce:</strong> The Site allows you to view our work and submit inquiries for interior design services. It does not currently facilitate direct online payments or "checkout"
                             transactions.
                         </li>
                         <li>

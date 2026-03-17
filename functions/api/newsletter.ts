@@ -46,7 +46,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         // 2. Send Welcome Email (Using Raw HTML to avoid bundling React)
         const { data, error: emailError } = await resend.emails.send({
-            from: 'Anakhe <onboarding@resend.dev>', // Update this if/when custom domain is ready
+            from: 'Anakhe <studio@anakhe.com>',
             to: email,
             subject: 'Welcome to the Inner Circle',
             html: `
@@ -103,6 +103,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                         <div style="font-size: 12px; color: #999; text-align: center;">
                             Anakhe Ltd • London, United Kingdom<br />
                             <a href="https://www.anakhe.com" style="color: #999; text-decoration: underline;">www.anakhe.com</a>
+                            <br /><br />
+                            <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #999; text-decoration: underline;">Unsubscribe</a>
                         </div>
                     </div>
                 </div>

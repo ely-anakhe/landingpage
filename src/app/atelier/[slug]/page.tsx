@@ -10,8 +10,31 @@ import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { DimensionsSection } from "@/components/atelier/DimensionsSection";
+import type { Metadata } from "next";
 
-// export const revalidate = 60;
+
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const piece = await client.fetch(PIECE_DETAIL_QUERY, { slug });
+    if (!piece) return { title: "Piece Not Found | Anakhe" };
+
+    const ogImage = piece.mainImage ? urlFor(piece.mainImage).width(1200).height(630).url() : undefined;
+
+    return {
+        title: `${piece.title} | The Atelier | Anakhe`,
+        description: piece.shortDescription || `${piece.title} — Bespoke furniture by Anakhe.`,
+        openGraph: {
+            title: `${piece.title} | Anakhe`,
+            description: piece.shortDescription || `${piece.title} — Bespoke furniture by Anakhe.`,
+            images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : [],
+        },
+    };
+}
 
 export async function generateStaticParams() {
     const pieces = await client.fetch(ATELIER_QUERY);

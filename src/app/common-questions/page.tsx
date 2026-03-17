@@ -4,7 +4,10 @@ import { Container } from "@/components/ui/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { type PortableTextBlock } from "sanity";
 
-// export const revalidate = 60; // Revalidate every minute
+export const metadata = {
+    title: "Common Questions | Anakhe",
+    description: "Details on ordering, delivery, and caring for your bespoke Anakhe pieces.",
+};
 
 interface FAQ {
     _id: string;

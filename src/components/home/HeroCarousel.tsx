@@ -120,7 +120,7 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
                     className="max-w-4xl"
                 >
                     <h2 className="font-serif text-xs md:text-sm uppercase tracking-[0.4em] text-muted mb-6">
-                        Interior Design & Bespoke Atelier
+                        Bespoke Interior Design
                     </h2>
 
                     <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-8 tracking-tight text-primary">

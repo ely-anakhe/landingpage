@@ -52,12 +52,6 @@ export const Footer = ({ settings }: { settings: any }) => {
                         Interiors
                     </Link>
                     <Link
-                        href="/atelier"
-                        className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
-                    >
-                        Atelier
-                    </Link>
-                    <Link
                         href="/materials"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >

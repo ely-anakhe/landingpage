@@ -46,6 +46,14 @@ export const PROJECT_DETAIL_QUERY = defineQuery(`
         ...,
         "asset": asset->{..., metadata}
     },
+    "linkedPieces": linkedPieces[]->{
+      _id,
+      title,
+      slug,
+      priceDisplay,
+      shortDescription,
+      "mainImage": mainImage.asset->{..., metadata}
+    },
     "neighbors": *[_type == "project"] | order(year desc) { "slug": slug.current, title }
   }
 `);
@@ -176,6 +184,10 @@ export const SETTINGS_QUERY = defineQuery(`
       asset->{..., metadata}
     },
     aboutPortrait {
+      ...,
+      asset->{..., metadata}
+    },
+    aboutInteriorImage {
       ...,
       asset->{..., metadata}
     }

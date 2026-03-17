@@ -15,7 +15,6 @@ interface MobileHeaderProps {
 export function MobileHeader({ navItems = [] }: MobileHeaderProps) {
     const defaultItems = [
         { label: "Interiors", href: "/interiors" },
-        { label: "Atelier", href: "/atelier" },
         { label: "Materials", href: "/materials" },
         { label: "Journal", href: "/journal" },
     ];

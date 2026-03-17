@@ -88,7 +88,7 @@ export default async function PrivacyPage() {
                     <h3 className="text-xl mb-4">5. Third-Party Services (Our Infrastructure)</h3>
                     <p className="mb-4">We are a "Headless" digital atelier, meaning we use specialized, secure third-party providers to power our services. We do not sell your data. We share data only with the following trusted partners to function:</p>
                     <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Vercel:</strong> Our hosting provider (delivers the website to your device).</li>
+                        <li><strong>Cloudflare:</strong> Our hosting provider (delivers the website to your device).</li>
                         <li><strong>Sanity.io:</strong> Our content management system (stores text and images).</li>
                         <li><strong>Resend:</strong> Our email infrastructure (securely processes your inquiry forms and delivers them to our studio).</li>
                         <li><strong>Mux:</strong> Our video streaming partner (delivers the high-definition video textures).</li>

@@ -7,8 +7,31 @@ import { notFound } from "next/navigation";
 import { Gallery } from "@/components/interiors/Gallery";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { PageNavigation } from "@/components/ui/PageNavigation";
+import { AtelierCard } from "@/components/atelier/AtelierCard";
+import type { Metadata } from "next";
 
-// export const revalidate = 60;
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const project = await client.fetch(PROJECT_DETAIL_QUERY, { slug });
+    if (!project) return { title: "Project Not Found | Anakhe" };
+
+    const ogImage = project.heroImage ? urlFor(project.heroImage).width(1200).height(630).url() : undefined;
+    const desc = [project.location, project.year].filter(Boolean).join(", ");
+
+    return {
+        title: `${project.title} | Interiors | Anakhe`,
+        description: desc ? `${project.title} — ${desc}` : `${project.title} — Interior project by Anakhe.`,
+        openGraph: {
+            title: `${project.title} | Anakhe`,
+            description: desc ? `${project.title} — ${desc}` : `${project.title} — Interior project by Anakhe.`,
+            images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : [],
+        },
+    };
+}
 
 export async function generateStaticParams() {
     const projects = await client.fetch(PROJECTS_QUERY);
@@ -38,11 +61,7 @@ export default async function ProjectPage({
         notFound();
     }
 
-    // ... imports
-
-    // ... inside function
-    // ... inside function
-    const { title, location, year, description, heroImage, gallery, video, neighbors } = project;
+    const { title, location, year, description, heroImage, gallery, video, neighbors, linkedPieces } = project;
 
     const currentIndex = neighbors?.findIndex((n: any) => n.slug === slug) ?? -1;
     const prev = currentIndex > 0 ? neighbors[currentIndex - 1] : null;
@@ -93,6 +112,18 @@ export default async function ProjectPage({
                     </div>
                 </div>
 
+                {/* Pieces In This Space */}
+                {linkedPieces && linkedPieces.length > 0 && (
+                    <section className="mt-24 pt-24 border-t border-border/20">
+                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16 font-normal">Pieces In This Space</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                            {linkedPieces.map((piece: any) => (
+                                <AtelierCard key={piece._id} piece={piece} />
+                            ))}
+                        </div>
+                    </section>
+                )}
+
                 <PageNavigation
                     prev={prev}
                     next={next}
@@ -103,3 +134,4 @@ export default async function ProjectPage({
         </article>
     );
 }
+

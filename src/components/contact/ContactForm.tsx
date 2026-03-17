@@ -40,27 +40,26 @@ export function ContactForm() {
     const onSubmit = async (data: FormValues) => {
         setIsSubmitting(true)
         try {
-            const formData = new FormData()
-            // Combine names for the API
-            formData.append("name", `${data.firstName} ${data.lastName}`)
-            formData.append("email", data.email)
-            formData.append("message", data.message)
-            // Use subject as context
-            formData.append("pieceContext", data.subject)
-
-            const response = await fetch("/api/inquire", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
-                body: formData,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    email: data.email,
+                    subject: data.subject,
+                    message: data.message,
+                }),
             })
 
             if (!response.ok) {
-                throw new Error("Failed to send inquiry")
+                throw new Error("Failed to send message")
             }
 
             setIsSuccess(true)
             reset()
         } catch (error) {
-            console.error("Error sending inquiry:", error)
+            console.error("Error sending message:", error)
         } finally {
             setIsSubmitting(false)
         }

@@ -1,17 +1,17 @@
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { LatestProjects } from "@/components/home/LatestProjects";
-import { AtelierSection } from "@/components/home/AtelierSection";
+
 import { ArtistShowcase } from "@/components/home/ArtistShowcase";
 import { PhilosophySection } from "@/components/home/PhilosophySection";
 import { client, urlFor } from "@/sanity/lib/client";
-import { SETTINGS_QUERY, LATEST_PROJECTS_QUERY, FEATURED_PIECES_QUERY } from "@/sanity/lib/queries";
+import { SETTINGS_QUERY, LATEST_PROJECTS_QUERY } from "@/sanity/lib/queries";
 
-// export const revalidate = 60;
+
 
 export default async function Home() {
   const settings = await client.fetch(SETTINGS_QUERY);
   const latestProjects = await client.fetch(LATEST_PROJECTS_QUERY);
-  const featuredPieces = await client.fetch(FEATURED_PIECES_QUERY);
+
   const heroContent = settings?.heroContent || [];
 
   return (
@@ -22,7 +22,7 @@ export default async function Home() {
 
       <LatestProjects projects={latestProjects} />
 
-      <AtelierSection pieces={featuredPieces} />
+
 
       <div className="w-full flex justify-center bg-surface py-0">
         <div className="w-16 h-px bg-border/20" />

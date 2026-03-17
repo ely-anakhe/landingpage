@@ -35,7 +35,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         const resend = new Resend(env.RESEND_API_KEY)
 
         const emailOptions: any = {
-            from: 'Anakhe Website <onboarding@resend.dev>',
+            from: 'Anakhe Studio <studio@anakhe.com>',
             to: ['contact@anakhe.com'],
             subject: `New Inquiry from ${name} ${pieceContext ? `regarding ${pieceContext}` : ''}`,
             html: `

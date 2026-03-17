@@ -3,6 +3,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { client, urlFor } from "@/sanity/lib/client";
 import { MATERIALS_QUERY } from "@/sanity/lib/queries";
 
+export const metadata = {
+    title: "Materials & Craft | Anakhe",
+    description: "We reject the artificial. Natural materials chosen for their beauty, durability, and connection to nature.",
+};
+
 export default async function MaterialsPage() {
     const materials = await client.fetch(MATERIALS_QUERY);
     return (

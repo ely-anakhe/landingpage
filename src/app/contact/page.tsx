@@ -1,6 +1,11 @@
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/contact/ContactForm";
 
+export const metadata = {
+    title: "Contact | Anakhe",
+    description: "Get in touch with Anakhe — bespoke interior design and furniture inquiries.",
+};
+
 export default function ContactPage() {
     return (
         <Container className="py-24 min-h-[60vh]">
@@ -28,17 +33,7 @@ export default function ContactPage() {
                     </a>
                 </div>
 
-                <div>
-                    <p className="font-serif text-xs uppercase tracking-[0.2em] text-muted mb-6">
-                        For Atelier Inquiries
-                    </p>
-                    <a
-                        href="mailto:atelier@anakhe.com"
-                        className="font-serif text-xl border-b border-black/20 pb-1 hover:text-primary hover:border-primary transition-all duration-300"
-                    >
-                        atelier@anakhe.com
-                    </a>
-                </div>
+
             </div>
         </Container>
     );

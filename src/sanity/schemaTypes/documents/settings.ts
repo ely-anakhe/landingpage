@@ -121,6 +121,13 @@ export default defineType({
             options: { hotspot: true },
             group: 'homeAssets', // Could make a new group but reusing homeAssets is simpler for now
         }),
+        defineField({
+            name: 'aboutInteriorImage',
+            title: 'About Page Interior Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'homeAssets',
+        }),
     ],
     groups: [
         {

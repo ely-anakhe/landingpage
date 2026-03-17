@@ -17,7 +17,7 @@ export function Hero() {
                 className="max-w-4xl"
             >
                 <h2 className="font-serif text-sm md:text-base uppercase tracking-[0.4em] text-muted mb-8">
-                    Interior Design & Bespoke Atelier
+                    Bespoke Interior Design
                 </h2>
 
                 <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-primary leading-none mb-10 tracking-tight">

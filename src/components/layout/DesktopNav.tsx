@@ -13,7 +13,6 @@ export function DesktopNav({ navItems = [] }: DesktopNavProps) {
     // Default items if none provided
     const defaultItems = [
         { label: "Interiors", href: "/interiors" },
-        { label: "Atelier", href: "/atelier" },
         { label: "Materials", href: "/materials" },
         { label: "Journal", href: "/journal" },
     ];

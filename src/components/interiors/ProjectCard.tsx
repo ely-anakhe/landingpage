@@ -17,11 +17,11 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
     const { title, slug, year, location, heroImage, curatorNote } = project;
 
     return (
-        <Link href={`/interiors/${slug.current}`} className="group block break-inside-avoid mb-8">
-            <div className="relative overflow-hidden bg-surface aspect-[3/4]">
+        <Link href={`/interiors/${slug.current}`} className="group block">
+            <div className="relative overflow-hidden bg-surface aspect-[4/3]">
                 {heroImage && (
                     <Image
-                        src={urlFor(heroImage).width(800).height(1067).fit("crop").url()}
+                        src={urlFor(heroImage).width(800).height(600).fit("crop").url()}
                         alt={title}
                         fill
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"

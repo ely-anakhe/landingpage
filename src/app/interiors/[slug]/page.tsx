@@ -23,7 +23,7 @@ export async function generateMetadata({
     const desc = [project.location, project.year].filter(Boolean).join(", ");
 
     return {
-        title: `${project.title} | Interiors | Anakhe`,
+        title: `${project.title} | Projects | Anakhe`,
         description: desc ? `${project.title} — ${desc}` : `${project.title} — Interior project by Anakhe.`,
         openGraph: {
             title: `${project.title} | Anakhe`,

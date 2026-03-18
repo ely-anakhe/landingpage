@@ -14,6 +14,20 @@ export const PROJECTS_QUERY = defineQuery(`
 `);
 
 export const LATEST_PROJECTS_QUERY = defineQuery(`
+  *[_type == "project" && featuredOnHomepage == true] | order(homepageOrder asc)[0...3] {
+    _id, 
+    title, 
+    slug, 
+    year, 
+    location,
+    curatorNote,
+    "heroImage": heroImage.asset->{..., metadata},
+    tags
+  }
+`);
+
+// Fallback query if no projects are explicitly featured
+export const LATEST_PROJECTS_FALLBACK_QUERY = defineQuery(`
   *[_type == "project"] | order(year desc)[0...3] {
     _id, 
     title, 

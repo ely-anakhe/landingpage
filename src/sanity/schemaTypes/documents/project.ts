@@ -20,6 +20,20 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'featuredOnHomepage',
+            title: 'Feature on Homepage',
+            type: 'boolean',
+            description: 'Toggle on to display this project on the homepage.',
+            initialValue: false,
+        }),
+        defineField({
+            name: 'homepageOrder',
+            title: 'Homepage Order',
+            type: 'number',
+            description: 'Controls the display order on the homepage (lower numbers appear first). Only applies when "Feature on Homepage" is enabled.',
+            hidden: ({ parent }) => !parent?.featuredOnHomepage,
+        }),
+        defineField({
             name: 'heroImage',
             title: 'Hero Image',
             type: 'image',

@@ -50,7 +50,7 @@ export function ArtistShowcase({ image, text }: ArtistShowcaseProps) {
                         </div>
 
                         {/* Signature */}
-                        <div className="pt-4">
+                        <div className="pt-4 flex justify-end">
                             <Image
                                 src="/signature.png"
                                 alt="Jordan Anais signature"

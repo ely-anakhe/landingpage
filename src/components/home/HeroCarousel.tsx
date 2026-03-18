@@ -111,7 +111,7 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
             </div>
 
             {/* Content Section - Below Media */}
-            <div className="w-full bg-background min-h-[70vh] px-6 flex flex-col items-center justify-center text-center">
+            <div className="w-full bg-background min-h-[35vh] px-6 flex flex-col items-center justify-center text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -119,13 +119,8 @@ export function HeroCarousel({ content = [] }: HeroCarouselProps) {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="max-w-4xl"
                 >
-                    <h2 className="font-serif text-xs md:text-sm uppercase tracking-[0.4em] text-muted mb-6">
+                    <h1 className="font-serif text-xs md:text-sm uppercase tracking-[0.4em] text-muted mb-6">
                         Bespoke Interior Design
-                    </h2>
-
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-8 tracking-tight text-primary">
-                        Spaces that<br />
-                        <span className="italic font-light">Breathe</span>
                     </h1>
 
                     <p className="font-serif text-lg md:text-xl text-foreground/80 max-w-lg mx-auto leading-relaxed font-light">

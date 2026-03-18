@@ -25,7 +25,7 @@ export const MATERIALS_QUERY = defineQuery(`
 `);
 
 export const LATEST_PROJECTS_QUERY = defineQuery(`
-  *[_type == "project"] | order(year desc)[0...3] {
+  *[_type == "project" && featuredOnHomepage == true] | order(homepageOrder asc)[0...3] {
     _id, 
     title, 
     slug, 

@@ -17,15 +17,6 @@ export default async function AboutPage() {
     const aboutTextRaw = settings?.aboutText || defaultAboutText;
     const aboutParagraphs = aboutTextRaw.split('\n').filter((p: string) => p.trim() !== '');
 
-    const firstParagraph = aboutParagraphs[0] || '';
-    const dropcapLetter = firstParagraph.charAt(0);
-    const firstParagraphRest = firstParagraph.slice(1);
-    const restParagraphs = aboutParagraphs.slice(1);
-
-    const defaultPoem = `"I don't design to have clients,\nI have clients in order to design"`;
-    const poemRaw = settings?.aboutPoem || defaultPoem;
-    const poemLines = poemRaw.split('\n');
-
     return (
         <article className="min-h-screen bg-background">
             {/* 1. Bio Section */}
@@ -58,7 +49,7 @@ export default async function AboutPage() {
                                 src={urlFor(settings.aboutInteriorImage).url()}
                                 alt={settings.aboutInteriorImage.alt || "Interior Design"}
                                 fill
-                                className="object-cover"
+                                className="object-cover grayscale"
                                 placeholder={settings.aboutInteriorImage.asset?.metadata?.lqip ? "blur" : "empty"}
                                 blurDataURL={settings.aboutInteriorImage.asset?.metadata?.lqip}
                             />
@@ -71,16 +62,12 @@ export default async function AboutPage() {
 
                     {/* Bio Copy */}
                     <div className="pt-8 md:pt-0">
-                        <h1 className="font-serif text-4xl md:text-5xl text-left mb-12 tracking-wide uppercase">
+                        <h1 className="font-serif text-4xl md:text-5xl text-left mb-6 tracking-wide uppercase">
                             About
                         </h1>
 
-                        <div className="space-y-8 font-serif font-light text-text-main/80 text-lg leading-relaxed text-justify">
-                            <p>
-                                {dropcapLetter && <span className="float-left text-7xl leading-[0.8] pr-4 pt-2 font-serif">{dropcapLetter}</span>}
-                                {firstParagraphRest}
-                            </p>
-                            {restParagraphs.map((p: string, i: number) => (
+                        <div className="space-y-8 font-serif font-light text-text-main/80 text-lg leading-[1.4] text-justify">
+                            {aboutParagraphs.map((p: string, i: number) => (
                                 <p key={i}>{p}</p>
                             ))}
                         </div>
@@ -88,30 +75,6 @@ export default async function AboutPage() {
                 </div>
             </Container>
 
-
-            {/* 2. Poem Section */}
-            <section className="py-16 bg-surface-dark/5">
-                <Container>
-                    <div className="max-w-2xl mx-auto text-center space-y-8">
-
-                        <div className="font-serif text-2xl md:text-3xl italic leading-loose text-text-main opacity-80">
-                            <p>
-                                {poemLines.map((line: string, i: number) => (
-                                    <span key={i}>
-                                        {line}
-                                        {i !== poemLines.length - 1 && <br />}
-                                    </span>
-                                ))}
-                            </p>
-                        </div>
-
-                        <p className="font-serif text-xs tracking-[0.2em] uppercase text-muted mt-8">
-                            — Jordan Anais
-                        </p>
-
-                    </div>
-                </Container>
-            </section>
 
 
 

@@ -17,14 +17,14 @@ export default async function MaterialsPage() {
                 <Reveal>
                     {/* The Stamp */}
                     <h2 className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-gray-500 mb-8">
-                        The Integrity of Matter
+                        A connection to nature
                     </h2>
                 </Reveal>
 
                 <Reveal delay={0.1}>
                     {/* The Headline */}
                     <h1 className="font-serif text-5xl md:text-7xl text-text-main leading-tight max-w-4xl">
-                        We do not decorate. We build.
+                        Materials we return to.
                     </h1>
                 </Reveal>
 
@@ -32,18 +32,14 @@ export default async function MaterialsPage() {
                     {/* The Body */}
                     <div className="mt-12 max-w-2xl text-lg md:text-xl font-serif leading-relaxed text-gray-600 prose prose-p:mb-6">
                         <p>
-                            Most of the world is wrapped in a lie. We live in rooms filled with plastic
-                            disguised as wood, polyester pretending to be silk, and veneers that peel away
-                            to reveal the emptiness underneath. These materials are not just cheap; they
-                            are dishonest. They are designed to decay from the moment they are made.
+                            True luxury is a home that supports health, comfort, and longevity,
+                            which guides our preference for natural finishes. We avoid plastics
+                            and toxic finishes wherever possible, choosing materials that age
+                            gracefully and beautifully.
                         </p>
-                        <p>
-                            We reject the artificial. Not out of nostalgia, and not for the sake of a trend.
-                            We reject it because a man cannot find truth in a room built on illusion.
-                        </p>
+                        <br />
                         <p className="text-primary font-medium">
-                            To flourish, the human spirit requires an environment of equal dignity. It
-                            demands materials that are as real as the life being lived within them.
+                            A selection of the studio’s favourites are outlined below.
                         </p>
                     </div>
                 </Reveal>
@@ -90,46 +86,6 @@ export default async function MaterialsPage() {
                     );
                 })}
             </section>
-
-            {/* Component 4: The Closer */}
-            <section className="max-w-2xl mx-auto py-32 text-center px-6">
-                <Reveal>
-                    <div className="font-serif text-xl leading-relaxed text-gray-700 space-y-8">
-                        <div>
-                            <h3 className="font-sans uppercase tracking-[0.2em] text-sm text-primary mb-4">The Virtue of Age</h3>
-                            <p>
-                                The ultimate test of a material is time.
-                            </p>
-                            <p>
-                                Synthetic materials do not age; they ruin. A scratch on plastic is a scar. A chip in veneer is a defect. They become garbage.
-                            </p>
-                            <p>
-                                Natural materials do not ruin; they evolve. The timber deepens in color. The velvet crushes to fit the body that rests on it. The stone wears smooth underfoot.
-                            </p>
-                            <p>
-                                We build furniture and spaces designed to outlive us. This is the only definition of sustainability that matters: Permanence. We do not create disposable objects for a disposable culture. We create heirs.
-                            </p>
-                        </div>
-
-                        <div className="pt-12">
-                            <h3 className="font-sans uppercase tracking-[0.2em] text-sm text-primary mb-4">The Result</h3>
-                            <p>
-                                Why does this matter? Because your environment is the mold of your mind.
-                            </p>
-                            <p>
-                                You cannot think clearly in a room that feels temporary. You cannot rest deeply on a sofa that feels like plastic.
-                            </p>
-                            <p>
-                                We use these materials because you deserve to live among things that are true. When the noise of the world is stripped away, and you are left with only the essential, you find room to breathe. You find room to think. You find the space to become who you are.
-                            </p>
-                        </div>
-                    </div>
-
-                    <span className="text-3xl md:text-4xl font-serif text-primary mt-12 block italic">
-                        This is not luxury. This is reality.
-                    </span>
-                </Reveal>
-            </section>
-        </main>
+        </main >
     );
 }

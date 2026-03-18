@@ -14,14 +14,15 @@ interface MobileHeaderProps {
 
 export function MobileHeader({ navItems = [] }: MobileHeaderProps) {
     const defaultItems = [
-        { label: "Interiors", href: "/interiors" },
+        { label: "Projects", href: "/interiors" },
         { label: "Materials", href: "/materials" },
         { label: "Journal", href: "/journal" },
     ];
 
     // Hide Atelier while it's not operating
     const items = (navItems?.length > 0 ? navItems : defaultItems)
-        .filter((item) => item.href !== "/atelier");
+        .filter((item) => item.href !== "/atelier")
+        .map(item => ({ ...item, label: item.label?.toLowerCase() === "interiors" ? "Projects" : item.label }));
 
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();

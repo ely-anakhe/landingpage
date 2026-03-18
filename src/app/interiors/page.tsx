@@ -3,7 +3,12 @@ import { PROJECTS_QUERY } from "@/sanity/lib/queries/interiors";
 import { ProjectCard } from "@/components/interiors/ProjectCard";
 import { Container } from "@/components/ui/Container";
 
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Projects | Anakhe",
+    description: "Archive of collected works by Anakhe.",
+};
 
 export default async function InteriorsPage() {
     const projects = await client.fetch(PROJECTS_QUERY);
@@ -19,7 +24,7 @@ export default async function InteriorsPage() {
                 </p>
             </header>
 
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
                 {projects.map((project: any) => (
                     <ProjectCard key={project._id} project={project} />
                 ))}

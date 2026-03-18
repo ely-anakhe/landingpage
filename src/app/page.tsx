@@ -5,13 +5,18 @@ import { ArtistShowcase } from "@/components/home/ArtistShowcase";
 import { PhilosophySection } from "@/components/home/PhilosophySection";
 import { client, urlFor } from "@/sanity/lib/client";
 import { SETTINGS_QUERY } from "@/sanity/lib/queries/settings";
-import { LATEST_PROJECTS_QUERY } from "@/sanity/lib/queries/interiors";
+import { LATEST_PROJECTS_QUERY, LATEST_PROJECTS_FALLBACK_QUERY } from "@/sanity/lib/queries/interiors";
 
 
 
 export default async function Home() {
   const settings = await client.fetch(SETTINGS_QUERY);
-  const latestProjects = await client.fetch(LATEST_PROJECTS_QUERY);
+  let latestProjects = await client.fetch(LATEST_PROJECTS_QUERY);
+
+  // Fallback to latest projects by year if none are explicitly featured
+  if (!latestProjects || latestProjects.length === 0) {
+    latestProjects = await client.fetch(LATEST_PROJECTS_FALLBACK_QUERY);
+  }
 
   const heroContent = settings?.heroContent || [];
 

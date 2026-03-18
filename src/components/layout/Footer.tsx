@@ -49,7 +49,7 @@ export const Footer = ({ settings }: { settings: any }) => {
                         href="/interiors"
                         className="font-serif text-sm uppercase tracking-widest text-text-main hover:text-primary transition-colors block mb-4"
                     >
-                        Interiors
+                        Projects
                     </Link>
                     <Link
                         href="/materials"

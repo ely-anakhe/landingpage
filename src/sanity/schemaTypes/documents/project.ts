@@ -99,18 +99,18 @@ export default defineType({
             title: 'Description',
             type: 'blockContent',
         }),
-        defineField({
-            name: 'linkedPieces',
-            title: 'Linked Pieces',
-            type: 'array',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'piece' }],
-                },
-            ],
-            description: 'Tag pieces of furniture used in this project.',
-        }),
+        // defineField({
+        //     name: 'linkedPieces',
+        //     title: 'Linked Pieces',
+        //     type: 'array',
+        //     of: [
+        //         {
+        //             type: 'reference',
+        //             to: [{ type: 'piece' }],
+        //         },
+        //     ],
+        //     description: 'Tag pieces of furniture used in this project.',
+        // }),
         defineField({
             name: 'seo',
             title: 'SEO',
